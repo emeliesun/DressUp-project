@@ -4,7 +4,11 @@ const User = require('../models/user');
 
 
 // Directs to /user/signup
-// app.get(/)
+app.get('/signup', (req, res) => {
+    User
+    .find({})
+    .then()
+});
 
 
 // Directs to /user/signup-confirm
