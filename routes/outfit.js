@@ -5,7 +5,7 @@ const app = express();
 
 // Create
 app.get("/create", (req, res)=>{
-    res.render('item/create')
+    res.render('outfit/create')
 })
 
 app.post("/create", (req,res)=>{
@@ -13,7 +13,8 @@ app.post("/create", (req,res)=>{
         title: req.body.title,
         image: req.body.image,
         occasion: req.body.occasion,
-        items: [],
+        description: req.body.description,
+        //items: [],
         // liked_by: [] ,
         shared: false,
     })
@@ -48,7 +49,7 @@ app.get("/detail/:id", (req, res)=>{
         .populate("liked_by")
         .then((outfitData)=>{
             console.log("Detail of: ", outfitData)
-            res.render('outfit/detail')
+            res.render('outfit/detail', {outfit: outfitData})
         })
         .catch((err)=> {
             res.send(err);
@@ -95,4 +96,4 @@ app.post('/update/:id',   /*upload.single('recipe-img') ,*/ (req, res)=>{
 // })
 
 
-
+module.exports = app;
