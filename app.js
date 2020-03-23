@@ -21,7 +21,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // Database connection
 mongoose
-  .connect('mongodb://localhost/dressUp', {
+  .connect('mongodb://localhost/DressUp', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -32,6 +32,7 @@ mongoose
   .catch(err => console.error('Error connecting to mongo', err));
 
 // Routes
+app.use('/', require('./routes/index'))
 app.use('/user', require('./routes/user'));
 app.use('/outfit', require('./routes/outfit'));
 app.use('/item', require('./routes/item'));
