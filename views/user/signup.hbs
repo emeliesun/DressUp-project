@@ -1,1 +1,16 @@
-<p>This is the signup-page.</p>
+<form action="/user/signup" method="POST" enctype="multipart/form-data">
+    <input type="text" required name="firstname" placeholder="Firstname"/>
+    <input type="text" required name="lastname" placeholder="Lastname" />
+
+    <input type="text" required name="username" placeholder="Username" />
+
+    <input type="text" required name="password" placeholder="Password" />
+    <div>
+        <label for="password"><small>Requires minimum 8 characters and 1 number.</small></label>
+    </div>
+
+    <input type="text" required name="password" placeholder="Repeat password" />
+
+    <button type="submit">Sign up!</button>
+   <p><small>Already have an account? <a href="/user/login">Login!</a></small></p> 
+</form>
