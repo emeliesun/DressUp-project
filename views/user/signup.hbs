@@ -1,16 +1,23 @@
-<form action="/user/signup" method="POST" enctype="multipart/form-data">
-    <input type="text" required name="firstname" placeholder="Firstname"/>
+{{#if errorMessage}}
+<div class="error-message">{{ errorMessage }}</div>
+{{/if}}
+
+<!--enctype="multipart/form-data"
+-->
+
+<form action="/user/signup" method="POST">
+    <input type="text" required name="firstname" placeholder="Firstname" />
     <input type="text" required name="lastname" placeholder="Lastname" />
 
     <input type="text" required name="username" placeholder="Username" />
 
-    <input type="text" required name="password" placeholder="Password" />
+    <input type="password" required name="password" placeholder="Password" />
     <div>
         <label for="password"><small>Requires minimum 8 characters and 1 number.</small></label>
     </div>
 
-    <input type="text" required name="password" placeholder="Repeat password" />
+    <input type="password" required name="password_check" placeholder="Repeat password" />
 
     <button type="submit">Sign up!</button>
-   <p><small>Already have an account? <a href="/user/login">Login!</a></small></p> 
+    <p><small>Already have an account? <a href="/user/login">Log in!</a></small></p>
 </form>

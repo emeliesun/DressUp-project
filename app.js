@@ -21,7 +21,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // Database connection
 mongoose
-  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/dressup?retryWrites=true&w=majority', {
+  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -30,6 +30,23 @@ mongoose
     console.log(`Connected to Mongo Database name: "${x.connections[0].name}"`)
   )
   .catch(err => console.error('Error connecting to mongo', err));
+
+//Session-express
+ const session = require('express-session');
+ const MongoStore = require('connect-mongo')(session);
+
+ app.use(
+   session({
+     secret: 'basic-auth-secret',
+     saveUninitialized: false,
+     resave: false,
+     cookie: { maxAge: 60000 },
+     store: new MongoStore({
+       mongooseConnection: mongoose.connection,
+       ttl: 24 * 60 * 60,
+     }),
+   })
+ );
 
 // Routes
 app.use('/', require('./routes/index'))
