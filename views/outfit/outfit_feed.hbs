@@ -1,3 +1,4 @@
+
 <div id="top-image">
     <img src="/{{outfit.image}}" alt="">
 </div>
@@ -7,22 +8,13 @@
 </div>
 
 
-{{#if outfit.shared}}
+
     <div><a href="/outfit/unshare/{{outfit._id}}">unshare sign</a></div>
 
-{{else}}
-    <div><a href="/outfit/share/{{outfit._id}}">share sign</a></div>
-{{/if}}
 
 <div class="item-list">
-    {{#each outfit.items}}
-        {{> item_thumb}}    
+    {{#each outfit.liked_by}}
+        {{> feed_item_thumb}}    
     {{/each}}    
 </div>
-
-
-
-<script>
-
-</script>
 

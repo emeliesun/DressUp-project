@@ -6,6 +6,7 @@ const app = express();
 // Create
 app.get("/create", (req, res)=>{
     res.render('outfit/create')
+    
 })
 
 app.post("/create", (req,res)=>{
@@ -42,6 +43,20 @@ app.get("/list", (req, res)=>{
         })
 })
 
+// Show fitting room (shared outfits)
+app.get("/fitting-room", (req, res)=>{
+    Outfit.find({shared:true})
+        .populate("items")
+        .populate("liked_by")
+        .then((outfitsData)=>{
+            console.log("fitting room list: ", outfitsData)
+            res.render('outfit/fitting_room', {sharedList: outfitsData})
+        })
+        .catch((err)=> {
+            res.send(err);
+        })
+})
+
 // Show one
 app.get("/detail/:id", (req, res)=>{
     Outfit.findById(req.params.id)
@@ -56,14 +71,43 @@ app.get("/detail/:id", (req, res)=>{
         })
 })
 
+// Share
+app.get('/share/:id', (req,res)=>{
+    Outfit.findByIdAndUpdate(req.params.id, {
+        shared: true
+    })
+    .then((outfitData)=>{
+        console.log("Shared: ", outfitData)
+        res.redirect(`/outfit/detail/${outfitData._id}`)
+    })
+    .catch((err)=> {
+        res.send(err);
+    })    
+})
+
+// Unshare
+app.get('/unshare/:id', (req,res)=>{
+    Outfit.findByIdAndUpdate(req.params.id, {
+        shared: false
+    })
+    .then((outfitData)=>{
+        console.log("Shared: ", outfitData)
+        res.redirect(`/outfit/detail/${outfitData._id}`)
+    })
+    .catch((err)=> {
+        res.send(err);
+    })    
+})
+
 // Update
 app.get('/update/:id', (req, res)=>{
     Outfit
-        .find()
+        .findById(req.params.id)
         .populate("items")
         .populate("liked_by")
         .then((outfitData)=>{
-            res.render('outfit/update', {outfitDataVar:outfitData})
+            // console.log(outfitData)
+            res.render('outfit/update', {outfit:outfitData})
         })
 } )
 

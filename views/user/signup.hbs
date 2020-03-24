@@ -1,3 +1,8 @@
+
+{{#if errorMessage}}
+  <div class="error-message">{{ errorMessage }}</div>
+{{/if}}
+
 <form action="/user/signup" method="POST" enctype="multipart/form-data">
     <input type="text" required name="firstname" placeholder="Firstname"/>
     <input type="text" required name="lastname" placeholder="Lastname" />

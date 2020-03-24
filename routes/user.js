@@ -13,28 +13,47 @@ app.get('/signup', (req, res) => {
 
 app.post('/signup', (req, res)=>{
       const { username, password } = req.body;
-      bcrypt.hash(password, 10, function(err, hash) {
-        if (err) next('Hashing error occured.');
-        else {
-          User.create({
-            username: username,
-            password: hash,
-          })
-            .then(newUser => {
-              if (newUser.username === '' || newUser.password === '')
-                res.send('Invalid credentials! You need to fill username and password.');
-              else if (newUser.username === newUser.password)
-                res.send('Username and password can not be the same. Please, try again!');
-              else {
-                req.session.currentUser = newUser;
-                res.redirect('/user/signup-confirm');
-              }
-            })
-            .catch(err => {
-              res.send('Error, user not created');
-            });
+      if (username === "" || password === "") {
+        res.render("user/signup", {
+          errorMessage: "Indicate a username and a password to sign up"
+        });
+        return;
+      }
+
+      if (username === password){
+        res.render('user/signup',{
+          errorMessage: "Username and password can not be the same. Please, try again!"
+        });
+        return;
+      }
+                
+      User.findOne({ username:username })
+      .then(user => {
+        if (user !== null) {
+          res.render("auth/signup", {
+            errorMessage: "The username already exists!"
+          });
+          return;
+        } else {
+          bcrypt.hash(password, 10, function(err, hash) {
+            if (err) next('Hashing error occured.');
+            else {
+              User.create({
+                username: username,
+                password: hash,
+              })
+              .then(newUser => {
+                  // req.session.currentUser = newUser;
+                  res.redirect('/user/signup-confirm');
+                })
+              .catch(err => {
+                res.send('Error, user not created',err);
+              });
+            }
+          });
         }
-      });
+      
+      })
 })
 
 

@@ -1,0 +1,18 @@
+
+
+
+
+<form action="/outfit/create/{{outfit._id}}" method="post">
+    <label for="title">title</label>
+    <input type="text" name="title" value="{{outfit.title}}" placeholder="{{outfit.title}}">
+    <label for="occasion">Occasion</label>
+    <select name="occasion" id="outfit-occasion"> 
+        <option value="Party">Party</option>
+        <option value="Work">Work</option>
+        <option value="Funeral">Funeral</option>
+    </select>
+    <label for="description">Description</label>
+    <input type="text" name="description" value="{{outfit.description}}" placeholder="{{outfit.description}}">
+    <button type="submit" formmethod="POST" id="">Update</button>
+</form>
+

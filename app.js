@@ -19,9 +19,25 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Partials
 hbs.registerPartials(__dirname + '/views/partials');
 
+// Helpers, Locals
+hbs.registerHelper('isEqual', (value1, value2)=> {
+  if (value1 == value2) {
+    console.log("isEqual")
+    return true ;
+  } else { 
+    console.log(value1)
+    console.log(value2)
+    return false
+  }
+    
+})
+
+// hbs.localsAsTemplateData(app);
+// app.locals.test="test"
+
 // Database connection
 mongoose
-  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/dressup?retryWrites=true&w=majority', {
+  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
