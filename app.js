@@ -35,7 +35,7 @@ mongoose
 app.use('/', require('./routes/index'))
 app.use('/user', require('./routes/user'));
 app.use('/outfit', require('./routes/outfit'));
-// app.use('/item', require('./routes/item'));
+app.use('/item', require('./routes/item'));
 
 // Function defenitions
 
