@@ -47,6 +47,23 @@ mongoose
   )
   .catch(err => console.error('Error connecting to mongo', err));
 
+//Session-express
+ const session = require('express-session');
+ const MongoStore = require('connect-mongo')(session);
+
+ app.use(
+   session({
+     secret: 'basic-auth-secret',
+     saveUninitialized: false,
+     resave: false,
+     cookie: { maxAge: 60000 },
+     store: new MongoStore({
+       mongooseConnection: mongoose.connection,
+       ttl: 24 * 60 * 60,
+     }),
+   })
+ );
+
 // Routes
 app.use('/', require('./routes/index'))
 app.use('/user', require('./routes/user'));

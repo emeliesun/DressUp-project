@@ -5,8 +5,6 @@ const userSchema = new Schema({
   firstname: { 
     type: String, 
     required: true,
-    // validator: function(v){
-    //   return 
     },
   lastname: { 
     type: String, 

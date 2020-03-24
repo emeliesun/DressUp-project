@@ -1,0 +1,11 @@
+#navbar{
+    background-color: rgb(173, 66, 60);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 110px;
+}
+
+h3 {
+    
+}
