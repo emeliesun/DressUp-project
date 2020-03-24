@@ -21,7 +21,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 
 // Database connection
 mongoose
-  .connect('mongodb://localhost/DressUp', {
+  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/dressup?retryWrites=true&w=majority', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
