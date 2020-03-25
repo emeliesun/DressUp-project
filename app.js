@@ -57,7 +57,7 @@ mongoose
      secret: 'basic-auth-secret',
      saveUninitialized: false,
      resave: false,
-     cookie: { maxAge: 120000 },
+     cookie: { maxAge: 1200000 },
      store: new MongoStore({
        mongooseConnection: mongoose.connection,
        ttl: 24 * 60 * 60,

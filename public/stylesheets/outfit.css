@@ -1,2 +1,35 @@
+/* shared_outfit_thumb.hbs*/
+#shared_outfit_thumb_framework{
+    background: white;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+}
 
+.framework_inside{
+    display: flex;
+}
+
+.desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.outfit_thumb_nr{
+    size: ;
+}
+
+.heart_icon{
+    position: relative;
+    height: 25px;
+}
+
+.items_icon{
+    position: relative;
+    height: 25px;   
+}
+
+/*  */
+/*  */
 
