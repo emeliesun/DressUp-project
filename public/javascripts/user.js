@@ -25,20 +25,3 @@ const axios = require('axios');
 //     })
 // })
 
-// function addFriend (element, friendId) {
-//     axios.get(`/user/add-friend/:${friendId}`)
-//         .then((response)=> {
-//             // handle success
-//             if (response) {
-//                 element.innerHTML = '<img src="" alt="" >'
-//             }
-//             console.log(response);
-//         })
-//         .catch(function (error) {
-//             // handle error
-//             console.log(error);
-//         })
-//         .then(function () {
-//             // always executed
-//         });
-// }

@@ -4,6 +4,10 @@ const app = express();
 const User = require('../models/user');
 
 
+// const mongoose      = require('mongoose');
+// mongoose.set('useFindAndModify', false);
+
+
 // Home
 app.get('/home', (req, res) => {
   // debugger
@@ -90,8 +94,28 @@ app.get('/user/profile', (req,res)=>{
 
 // Add-friend
 app.get('/add-friend', (req, res) => {
+  // debugger
     let userName = req.session.currentUser.username;
-  User.find({ username: { $ne: userName }})
+    let userId = req.session.currentUser._id;
+  User.find(
+    {
+       $and: [
+        {
+         username: {
+          $ne: userName
+         }
+        },
+        {
+         friend_request: {
+          $not: {
+           $elemMatch: {
+            $eq: userId
+           }
+          }
+         }
+        }
+       ]
+     })
     .then(usersData => {
       res.render('user/add_friend', {users:usersData});
     })
@@ -101,7 +125,7 @@ app.get('/add-friend', (req, res) => {
 });
 
 app.get('/add-friend/:id', (req,res)=>{
-  debugger
+  // debugger
   const friendId = req.params.id;
   let userId = req.session.currentUser._id;
   User.findByIdAndUpdate(friendId,{
@@ -119,9 +143,6 @@ app.get('/add-friend/:id', (req,res)=>{
 
 
 // 
-
-
-//Obs, reminder to self >> need to inser app.use(session)... in app.js to get it to work with logout!
 
 // app.get('/logout', (req, res) => {
 //   User.find()

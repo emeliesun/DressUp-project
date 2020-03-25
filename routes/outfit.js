@@ -29,21 +29,6 @@ app.post("/create", (req,res)=>{
     })
 })
 
-// List all
-// app.get("/list", (req, res)=>{
-//     Outfit
-//         .find()
-//         .populate("items")
-//         .populate("liked_by")
-//         .then((outfitListData)=>{
-//             console.log("the list", outfitListData)
-//             res.render('outfit/list', {listdata: outfitListData})
-//         })
-        // .catch((err)=> {
-        //     res.send(`Error: ${err}`);
-        // })
-// })
-
 app.get('/list', (req,res)=>{
     debugger
     let userName = req.session.currentUser.username;
@@ -69,12 +54,25 @@ app.get('/list', (req,res)=>{
 
 // Show fitting room (shared outfits)
 app.get("/fitting-room", (req, res)=>{
-    Outfit.find({shared:true})
+    let userName = req.session.currentUser.userName;
+    Outfit.find({$and:[{owner: userName},{shared:true}]})
+        .populate("owner")
         .populate("items")
         .populate("liked_by")
         .then((outfitsData)=>{
             console.log("fitting room list: ", outfitsData)
             res.render('outfit/fitting_room', {sharedList: outfitsData})
+        })
+        .catch((err)=> {
+            res.send(`Error: ${err}`);
+        })
+})
+
+// Show feed
+app.get('/feed/:id', (req,res)=>{
+    Outfit.findById(req.params.id)
+        .then(outfitData => {
+            res.render('outfit/outfit_feed', {outfit:outfitData})
         })
         .catch((err)=> {
             res.send(`Error: ${err}`);

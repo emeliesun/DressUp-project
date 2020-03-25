@@ -37,8 +37,6 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
     
 })
 
-
-
 // Database connection
 mongoose
   .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
@@ -46,13 +44,14 @@ mongoose
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(x =>
     console.log(`Connected to Mongo Database name: "${x.connections[0].name}"`)
   )
   .catch(err => console.error('Error connecting to mongo', err));
 
-
+  // mongoose.set('useFindAndModify', false);
 
  app.use(
    session({
