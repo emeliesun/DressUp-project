@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Outfit = require('../models/outfit');
 const app = express();
+const User = require('../models/user');
 
 // Create
 app.get("/create", (req, res)=>{
@@ -29,19 +30,42 @@ app.post("/create", (req,res)=>{
 })
 
 // List all
-app.get("/list", (req, res)=>{
-    Outfit
-        .find()
-        .populate("items")
-        .populate("liked_by")
-        .then((outfitListData)=>{
-            console.log("the list", outfitListData)
-            res.render('outfit/list', {listdata: outfitListData})
-        })
-        .catch((err)=> {
-            res.send(`Error: ${err}`);
-        })
-})
+// app.get("/list", (req, res)=>{
+//     Outfit
+//         .find()
+//         .populate("items")
+//         .populate("liked_by")
+//         .then((outfitListData)=>{
+//             console.log("the list", outfitListData)
+//             res.render('outfit/list', {listdata: outfitListData})
+//         })
+        // .catch((err)=> {
+        //     res.send(`Error: ${err}`);
+        // })
+// })
+
+app.get('/list', (req,res)=>{
+    debugger
+    let userName = req.session.currentUser.username;
+    User.find({
+      filter: {
+       username: userName
+      },
+      project: {
+       username:1,
+       outfits: 1
+      }
+     })
+      .populate("outfits")
+      .then(outfitData => {
+        console.log("the list", outfitData)
+        res.render('outfit/list', {listdata: outfitData, username:userName})
+      })
+      .catch((err)=> {
+        res.send(`Error: ${err}`);
+    })
+      
+  })
 
 // Show fitting room (shared outfits)
 app.get("/fitting-room", (req, res)=>{
