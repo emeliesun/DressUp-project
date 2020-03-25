@@ -54,6 +54,8 @@ mongoose
   )
   .catch(err => console.error('Error connecting to mongo', err));
 
+
+
  app.use(
    session({
      secret: 'basic-auth-secret',

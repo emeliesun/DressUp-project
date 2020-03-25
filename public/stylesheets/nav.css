@@ -26,15 +26,15 @@ h3 {
   text-decoration: none;
 }
 
-.active, .navlink:hover{
+.navlink:hover{
     text-decoration: underline;
     color: black;
 }
-
-/* a.active{
-  background-color: #555;
+/* 
+.active, .navlink:focus{
   color: white;
-} *
+  font-style: italic;
+} 
 
 
-
+ */
