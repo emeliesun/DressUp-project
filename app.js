@@ -41,8 +41,8 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
 
 // Database connection
 mongoose
-  // .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
-    .connect('mongodb://localhost/DressUp', {
+  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
+    // .connect('mongodb://localhost/DressUp', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -67,7 +67,7 @@ mongoose
 
 
 // Middleware Setup
-app.use('/user/dashboard', protect);
+app.use('/user', protect);
 app.use('/outfit', protect);
 app.use('/item', protect);
 
@@ -82,9 +82,9 @@ app.use('/item', require('./routes/item'));
 // Function defenitions
 //middleware definition
 function protect (req,res,next){ 
-  debugger
+  // debugger
   if (req.session.currentUser) next()
-  else { res.redirect('/user/login', {
+  else { res.render('login', {
     errorMessage: "Login Required!"
     }); 
   }
