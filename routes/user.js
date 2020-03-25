@@ -3,7 +3,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-// Render /user/signup
+// Signup
 app.get('/signup', (req, res) => {
   res.render('user/signup');
 });
@@ -63,7 +63,7 @@ app.post('/signup', (req, res, next) => {
     });
 
 
-// Render /user/signup-confirm
+// Signup confirm
 app.get('/signup_confirm', (req, res) => {
   User
   .find()
@@ -75,7 +75,7 @@ app.get('/signup_confirm', (req, res) => {
     });
 });
 
-// Render /user/login
+// Login
 app.get('/login', (req, res) => {
   res.render('user/login');
 });
@@ -104,10 +104,8 @@ app.post('/login', (req, res) => {
               errorMessage: 'Wrong password. Try again!'
           });
           else {
-            req.session.user = user;
-            res.render('user/dashboard', {
-                loggedInUser: user
-            });
+            req.session.currentUser = user;
+            res.redirect('/user/home');
           }
         });
     })
@@ -116,15 +114,15 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Render /user/dashboard
+// Dashboard
 app.get('/home', (req, res) => {
-  User.find()
-    .then(user => {
-      res.render('user/dashboard');
-    })
-    .catch(err => {
-      console.log('Error, something went wrong.');
-    });
+  let userName = req.session.currentUser.username;
+  res.render('user/dashboard',{
+    welcomeMessage: `Welcome ${userName}`
+  })
+  .catch(err => {
+    console.log('Error, something went wrong.');
+  });
 });
 
 // Render /user/feed

@@ -1,14 +1,16 @@
-const express = require('express');
-const app = express();
-const hbs = require('hbs');
-const path = require('path');
-const mongoose = require('mongoose');
-const User = require('./models/user');
-const Outfit = require('./models/outfit');
-const Item = require('./models/item');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-var upload = multer({ dest: 'public/' });
+const express       = require('express');
+const app           = express();
+const hbs           = require('hbs');
+const path          = require('path');
+const mongoose      = require('mongoose');
+const User          = require('./models/user');
+const Outfit        = require('./models/outfit');
+const Item          = require('./models/item');
+const bodyParser    = require('body-parser');
+const multer        = require('multer');
+var upload          = multer({ dest: 'public/' });
+const session       = require("express-session");
+const MongoStore    = require("connect-mongo")(session);
 
 // Handlebars, Statics, body parser
 app.set('view engine', 'hbs');
