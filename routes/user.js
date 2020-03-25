@@ -81,6 +81,7 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
+  debugger
     const {username, password} = req.body;
     if (username === '' || password === ''){
             res.render('user/login', {
@@ -114,8 +115,9 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Dashboard
+// Dashboard (Home)
 app.get('/home', (req, res) => {
+  debugger
   let userName = req.session.currentUser.username;
   res.render('user/dashboard',{
     welcomeMessage: `Welcome ${userName}`
@@ -155,6 +157,8 @@ app.get('/add_friend', (req, res) => {
       res.send(`Error: ${err}`);
     });
 });
+
+
 
 //Obs, reminder to self >> need to inser app.use(session)... in app.js to get it to work with logout!
 

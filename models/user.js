@@ -20,6 +20,10 @@ const userSchema = new Schema({
     required: true, 
     unique: true 
   },
+  outfits: {
+    type:Array,
+    default: []
+  },
   friend_request: {
     type: Array, 
     default: []
