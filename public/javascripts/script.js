@@ -3,7 +3,9 @@
 
 // })
 
-
+const itemJs = require ('./item');
+const outfitJs = require ('./outfit');
+const userJs = require ('./user')
 
 //Navbar links
 // Add active class to the current button (highlight it)
