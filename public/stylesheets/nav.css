@@ -1,50 +1,56 @@
-#navbar{
-    background-color: rgb(173, 66, 60);
-    height: 110px;
+@media screen and (max-width: 600px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+    #navbar{
+        background-color: rgb(173, 66, 60);
+        height: 110px;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #navbox{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 900px;
+    }
+
+    .nav-direction{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 0;
+    }
+
+    .img-nav-icon{
+        height: 35px;   
+    }
+
+    .navlink {
+    outline: none;
+    cursor: pointer;
     text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    }
 
-#navbox{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 900px;
-}
+    .navlink:hover{
+        text-decoration: underline;
+        color: black;
+    }
+    /* 
+    .active, .navlink:focus{
+    color: white;
+    font-style: italic;
+    } 
+    */
 
-.nav-direction{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin-top: 0;
-}
-
-.img-nav-icon{
-    height: 35px;   
-}
-
-.navlink {
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-.navlink:hover{
-    text-decoration: underline;
-    color: black;
-}
-/* 
-.active, .navlink:focus{
-  color: white;
-  font-style: italic;
-} 
- */
-
-#navH3 {
-   font-family: San Francisco Pro Text;
-    font-size: x-large;
-    color: black;
-    margin: 3px;
+    #navH3 {
+    font-family: San Francisco Pro Text;
+        font-size: x-large;
+        color: black;
+        margin: 3px;
+    }
 }
