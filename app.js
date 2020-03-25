@@ -37,8 +37,6 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
     
 })
 
-
-
 // Database connection
 mongoose
   .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {

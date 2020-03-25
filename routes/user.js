@@ -144,9 +144,6 @@ app.get('/add-friend/:id', (req,res)=>{
 
 // 
 
-
-//Obs, reminder to self >> need to inser app.use(session)... in app.js to get it to work with logout!
-
 // app.get('/logout', (req, res) => {
 //   User.find()
 //     .then(user => {

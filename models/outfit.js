@@ -9,6 +9,7 @@ const outfitSchema = new Schema({
   items: [{ type: mongoose.Types.ObjectId, ref: "items" }],
   liked_by: [{ type: mongoose.Types.ObjectId, ref: "users" }],
   shared: {type: Boolean},
+  owner: { type: mongoose.Types.ObjectId, ref: "users" }
 });
 
 const Outfit = mongoose.model('outfits', outfitSchema);
