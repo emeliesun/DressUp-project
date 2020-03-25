@@ -1,9 +1,37 @@
 {{>nav}}
+{{!-- <p>Welcome {{username}}</p> --}}
 
-<p>This is your home-page {{loggedInUser.username}}.</p>
-<p>On this page you should be able to see 
+<div id="home-frame">
+    <div>
+        <h2 class="mainH2">Your Fitting Room</h2>
+        <div>
+            {{!-- {{#each sharedList}}
+            <div class="shared-outfit">
+                {{> shared_outfit_thumb }}
+            </div>
+            {{/each}} --}}
+                    {{!-- {{#each outfit.title}} --}}
+                        {{!-- <h3>{{outfit.title}}</h3> --}}
+                    {{!-- {{/each}} --}}
+
+        </div>
+    </div>
+    <div>
+        <h2 class="mainH2">Your Outfits</h2class="mainH2">
+        <div>
+            {{!--Insert the "Your Outfits" --}}
+        </div>
+    </div>
+    <div>
+        <h2 class="mainH2">Your Genies</h2class="mainH2">
+    </div>
+    <div>{{!--Insert the "You Genies" --}}</div>
+</div>
+
+
+
     <ul>
-        <li>Nav-menu with the links of "Home", "Wardrobe" and "Feed".</li>
+        
         <li>Menu-icon (slides in from the left -->) </li>
         <li>"Your outfits" --> direct you to Outfit-detail-full</li>
         <li>"Your fitting-room" --> direct you to Fitting-room(/outfit/activity)</li>
