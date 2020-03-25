@@ -4,7 +4,28 @@
 </div>
 <div>
     <h3>{{this.firstname}} {{this.lastname}}</h3>
-    <div class="add-friend-btn" id="{{this._id}}">
+    <div class="add-friend-btn" id="{{this._id}}" onclick="addFriend(this,{{this.id}})">
         <img src="/images/trash-4-24.png" alt="" >
     </div> 
 </div>
+
+
+<script type="text/javascript">
+    function addFriend (element, friendId) {
+    axios.get(`/user/add-friend/:${friendId}`)
+        .then((response)=> {
+            // handle success
+            if (response) {
+                element.innerHTML = '<img src="" alt="" >'
+            }
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
+}
+</script>
