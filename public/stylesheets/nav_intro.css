@@ -1,8 +1,21 @@
-#navbar{
+#navbar-intro{
     background-color: rgb(173, 66, 60);
     height: 110px;
     text-decoration: none;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    /* align-content: center; */
+}
+
+.logo-icon{
+    height: 7%;
+    margin-top: 21px;
+    position: fixed;
+}
+
+.nav-text{
+    margin-top: 16px;
+    margin-left: 50px;
+    position: fixed;
+    font-size: x-large
 }

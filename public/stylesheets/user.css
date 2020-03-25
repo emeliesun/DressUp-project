@@ -1,0 +1,21 @@
+#home-frame{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainH2{
+    color: rgb(173, 66, 60);
+}
+
+.nav-direction{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 0;
+}
+
+img{
+    height: 35px;   
+}
