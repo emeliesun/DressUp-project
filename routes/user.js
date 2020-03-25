@@ -3,7 +3,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-// Render /user/signup
+// Signup
 app.get('/signup', (req, res) => {
   res.render('user/signup');
 });
@@ -41,7 +41,7 @@ app.post('/signup', (req, res, next) => {
     }
     bcrypt.hash(password, 10, function(err, hash) {
       if (err) {
-        next('Hashing error occured.', err);
+        res.send(`Hashing error occured.  ${err}`);
       } else {
 
         User
@@ -56,14 +56,14 @@ app.post('/signup', (req, res, next) => {
                 res.redirect('/user/signup_confirm');
             })
             .catch(err => {
-                next(`Error, user not created ${err}`);
+              res.send(`Error, user not created ${err}`);
             });
       }});
     })
     });
 
 
-// Render /user/signup-confirm
+// Signup confirm
 app.get('/signup_confirm', (req, res) => {
   User
   .find()
@@ -71,11 +71,11 @@ app.get('/signup_confirm', (req, res) => {
       res.render('user/signup_confirm');
     })
     .catch(err => {
-      console.log('Error, something went wrong.');
+      res.send(`Error: ${err}`);
     });
 });
 
-// Render /user/login
+// Login
 app.get('/login', (req, res) => {
   res.render('user/login');
 });
@@ -104,10 +104,8 @@ app.post('/login', (req, res) => {
               errorMessage: 'Wrong password. Try again!'
           });
           else {
-            req.session.user = user;
-            res.render('user/dashboard', {
-                loggedInUser: user
-            });
+            req.session.currentUser = user;
+            res.redirect('/user/home');
           }
         });
     })
@@ -116,44 +114,48 @@ app.post('/login', (req, res) => {
     });
 });
 
-// Render /user/dashboard
+// Dashboard
 app.get('/home', (req, res) => {
-  User.find()
-    .then(user => {
-      res.render('user/dashboard');
-    })
-    .catch(err => {
-      console.log('Error, something went wrong.');
-    });
+  let userName = req.session.currentUser.username;
+  res.render('user/dashboard',{
+    welcomeMessage: `Welcome ${userName}`
+  })
 });
 
-// Render /user/feed
+// Feed
 app.get('/feed', (req, res) => {
-  User.find()
-    .then(user => {
-      res.render('user/feed');
+  let userName = req.session.currentUser.username;
+  User.find({
+    filter: {
+     username: userName
+    },
+    project: {
+     username:1,
+     friend_request: 1,
+     friends: 1
+    }
+   })
+   .populate("friend_request")
+   .populate("friends")
+    .then(feedData => {
+      res.render('user/feed', {userFeedData:feedData});
     })
     .catch(err => {
-      console.log('Error, something went wrong.');
+      res.send(`Error: ${err}`);
     });
 });
 
 //  Render /user/add-friend
 app.get('/add_friend', (req, res) => {
   User.find()
-    .then(user => {
-      res.render('user/add_friend');
+    .then(usersData => {
+      res.render('user/add_friend', {users:usersData});
     })
     .catch(err => {
-      console.log('Error, something went wrong.');
+      res.send(`Error: ${err}`);
     });
 });
 
-// Render /user/logout
-// app.get('/logout', (req, res) => {
-//     req.session.destroy();
-//     res.redirect('user/login');
-// })
 //Obs, reminder to self >> need to inser app.use(session)... in app.js to get it to work with logout!
 
 // app.get('/logout', (req, res) => {

@@ -24,7 +24,7 @@ app.post("/create", (req,res)=>{
         res.redirect(`/outfit/detail/${outfitData._id}`);
     })
     .catch((err)=> {
-        res.send(err);
+        res.send(`Error: ${err}`);
     })
 })
 
@@ -39,7 +39,7 @@ app.get("/list", (req, res)=>{
             res.render('outfit/list', {listdata: outfitListData})
         })
         .catch((err)=> {
-            res.send(err);
+            res.send(`Error: ${err}`);
         })
 })
 
@@ -53,7 +53,7 @@ app.get("/fitting-room", (req, res)=>{
             res.render('outfit/fitting_room', {sharedList: outfitsData})
         })
         .catch((err)=> {
-            res.send(err);
+            res.send(`Error: ${err}`);
         })
 })
 
@@ -67,7 +67,7 @@ app.get("/detail/:id", (req, res)=>{
             res.render('outfit/detail', {outfit: outfitData})
         })
         .catch((err)=> {
-            res.send(err);
+            res.send(`Error: ${err}`);
         })
 })
 
@@ -81,7 +81,7 @@ app.get('/share/:id', (req,res)=>{
         res.redirect(`/outfit/detail/${outfitData._id}`)
     })
     .catch((err)=> {
-        res.send(err);
+        res.send(`Error: ${err}`);
     })    
 })
 
@@ -95,7 +95,7 @@ app.get('/unshare/:id', (req,res)=>{
         res.redirect(`/outfit/detail/${outfitData._id}`)
     })
     .catch((err)=> {
-        res.send(err);
+        res.send(`Error: ${err}`);
     })    
 })
 
@@ -125,7 +125,7 @@ app.post('/update/:id',   /*upload.single('recipe-img') ,*/ (req, res)=>{
         res.redirect(`/detail/${outfitData._id}`)
     })
     .catch((err)=> {
-        res.send(err);
+        res.send(`Error: ${err}`);
     })    
 })
 
