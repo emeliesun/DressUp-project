@@ -3,10 +3,12 @@ const app           = express();
 const hbs           = require('hbs');
 const path          = require('path');
 const mongoose      = require('mongoose');
+// const favicon       = require('serve-favicon');
 const User          = require('./models/user');
 const Outfit        = require('./models/outfit');
 const Item          = require('./models/item');
 const bodyParser    = require('body-parser');
+const cookieParser  = require('cookie-parser');
 const multer        = require('multer');
 var upload          = multer({ dest: 'public/' });
 const session       = require("express-session");
@@ -34,8 +36,11 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
     
 })
 
-// hbs.localsAsTemplateData(app);
-// app.locals.test="test"
+// Middleware Setup
+app.use('/user/dashboard', protect);
+app.use('/outfit', protect);
+app.use('/item', protect);
+
 
 // Database connection
 mongoose
@@ -49,9 +54,7 @@ mongoose
   )
   .catch(err => console.error('Error connecting to mongo', err));
 
-//Session-express
- const session = require('express-session');
- const MongoStore = require('connect-mongo')(session);
+
 
  app.use(
    session({
@@ -73,6 +76,14 @@ app.use('/outfit', require('./routes/outfit'));
 app.use('/item', require('./routes/item'));
 
 // Function defenitions
+// middleware definition
+function protect (req,res,next){ 
+  if (req.session.currentUser) next()
+  else { res.redirect('/user/login', {
+    errorMessage: "Login Required!"
+    }); 
+  }
+}
 
 // Listener
 app.listen(3002, () => {
