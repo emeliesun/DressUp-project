@@ -1,4 +1,17 @@
+/* 
+GENERAL STYLING-DECISIONS
+
+Dusty red: rgb(173, 66, 60)
+Body bg beige: rgba(252, 233, 212, 38)
+Button green: rgb(125, 179, 134);
+Button orange: rgb(230, 169, 134);
+Placeholder fields grey: rgb(141, 141, 141);
+Heart & Item Icons red: rgb(250, 116, 112);
+
+font-family: San Francisco Pro Text;
+ */
+
 body{
     margin: 0;
-    padding: 0;
+    padding: 0;    
 }

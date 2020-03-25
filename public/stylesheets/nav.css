@@ -1,11 +1,40 @@
 #navbar{
     background-color: rgb(173, 66, 60);
+    height: 110px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#navbox{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 110px;
+    width: 900px;
 }
 
 h3 {
-    
+   font-family: San Francisco Pro Text;
+    font-size: x-large;
+    color: black;
 }
+
+.navlink {
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.active, .navlink:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+/* a.active{
+  background-color: #555;
+  color: white;
+} *
+
+
+

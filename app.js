@@ -50,9 +50,6 @@ mongoose
   .catch(err => console.error('Error connecting to mongo', err));
 
 //Session-express
- const session = require('express-session');
- const MongoStore = require('connect-mongo')(session);
-
  app.use(
    session({
      secret: 'basic-auth-secret',
