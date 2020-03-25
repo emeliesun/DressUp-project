@@ -14,6 +14,7 @@ var upload          = multer({ dest: 'public/' });
 const session       = require("express-session");
 const MongoStore    = require("connect-mongo")(session);
 
+
 // Handlebars, Statics, body parser
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));
@@ -40,7 +41,8 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
 
 // Database connection
 mongoose
-  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
+  // .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
+    .connect('mongodb://localhost/DressUp', {
     useCreateIndex: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -57,7 +59,7 @@ mongoose
      secret: 'basic-auth-secret',
      saveUninitialized: false,
      resave: false,
-     cookie: { maxAge: 1200000 },
+     cookie: { maxAge: 240000 },
      store: new MongoStore({
        mongooseConnection: mongoose.connection,
        ttl: 24 * 60 * 60,
