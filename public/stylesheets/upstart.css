@@ -4,6 +4,11 @@
     width: 100%;
   }
 
+  #btn-primary {
+    background-color: rgb(230, 169, 134) !important;
+    border-color:rgb(230, 169, 134) !important ;
+  }
+
 #form-frame {
   background: #384047;
   font-family: sans-serif;

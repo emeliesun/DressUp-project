@@ -12,6 +12,7 @@ const bodyParser    = require('body-parser');
 const session       = require("express-session");
 const MongoStore    = require("connect-mongo")(session);
 
+require("dotenv").config();
 
 // Handlebars, Statics, body parser
 app.set('view engine', 'hbs');
@@ -37,7 +38,7 @@ hbs.registerHelper('isEqual', (value1, value2)=> {
 
 // Database connection
 mongoose
-  .connect('mongodb+srv://overlord:OVERLORD@main-efpuk.azure.mongodb.net/DressUp?retryWrites=true&w=majority', {
+  .connect(process.env.db, {
     // .connect('mongodb://localhost/DressUp', {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -90,6 +91,6 @@ function protect (req,res,next){
 }
 
 // Listener
-app.listen(3002, () => {
+app.listen(process.env.PORT, () => {
   console.log('Webserver is listening on port 3002');
 });
