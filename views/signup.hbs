@@ -9,49 +9,28 @@
 <form action="/signup" method="POST" id="form-frame-inside">
   <div class="form-group">
     <label for="firstname">Firstname</label>
-    <input class="form-control" type="text" placeholder="Firstname" name="firstname"> 
+    <input class="form-control" type="text" required placeholder="Firstname" name="firstname"> 
   </div>
 
    <div class="form-group">
     <label for="lastname">Lastname</label>
-    <input class="form-control" type="text" placeholder="Lastname" name="lastname">
+    <input class="form-control" type="text" required placeholder="Lastname" name="lastname">
     
   </div>
    <div class="form-group">
     <label for="username">Username</label>
-    <input class="form-control" type="text" placeholder="Username" name="username">
+    <input class="form-control" type="text" required placeholder="Username" name="username">
     
   </div>
   <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" name="password">
+    <label for="password">Password <span>Must contain minimum 8 characters and 1 number.</span></label>
+    <input type="password" required class="form-control" id="password" placeholder="Password" name="password">
   </div>
   <div class="form-group">
     <label for="password_check">Repeat password</label>
-    <input type="password" class="form-control" id="password_check" name="password_check" >
+    <input type="password" required class="form-control" id="password_check" placeholder="Repeat password" name="password_check" >
   </div>
   
   <button type="submit" class="btn btn-primary" id="btn-primary">Signup</button>
+    <span class="login-check">Already have an account? <a href="/login" class="login-link">Login!</a></span>
 </form>
-
-
-{{!-- 
-<div id="form-frame">
-    <form action="/signup" method="POST" id="form-frame-inside">
-
-        <input type="text" required name="firstname" placeholder="Firstname" />
-        <input type="text" required name="lastname" placeholder="Lastname" />
-
-        <input type="text" required name="username" placeholder="Username" />
-
-        <input type="password" required name="password" placeholder="Password" />
-        <div>
-            <label for="password"><small>Requires minimum 8 characters and 1 number.</small></label>
-        </div>
-
-        <input type="password" required name="password_check" placeholder="Repeat password" />
-
-        <button type="submit" id="button">Sign up!</button>
-        <span>Already have an account? <a href="/login">Log in!</a></span>
-    </form>
-</div> --}}

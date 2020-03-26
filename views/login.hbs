@@ -6,11 +6,19 @@
 
 {{!-- enctype="multipart/form-data" --}}
 
-<form action="/login" method="POST">
-    <input type="text" required name="username" placeholder="Username" />
+<form action="/login" method="POST" id="form-frame-inside">
 
-    <input type="text" required name="password" placeholder="Password" />
+    </div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" required placeholder="Username" name="username">
 
-    <button type="submit">Log in!</button>
-    <p><small>Don't have an account? <a href="/signup">Sign up!</a></small></p>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" required class="form-control" id="password" placeholder="Password" name="password">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="btn-primary">Login</button>
+    <span class="login-check">Don't have an account yet?  <a href="/login" class="login-link"> Signup!</a></span>
 </form>
