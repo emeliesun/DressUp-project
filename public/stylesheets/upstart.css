@@ -4,62 +4,75 @@
     width: 100%;
   }
 
-  #btn-primary {
-    background-color: rgb(230, 169, 134) !important;
-    border-color:rgb(230, 169, 134) !important ;
+  #intro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url(../images/fit_room.png);
+    background-repeat: round;
+    height: -webkit-fill-available;
   }
 
-#form-frame {
-  background: #384047;
-  font-family: sans-serif;
-  font-size: 10px
-}
+  #btn-primary {
+    background-color: rgb(230, 169, 134) !important;
+    border-color:rgb(230, 169, 134) !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+
 #form-frame-inside {
   background: #fff;
   padding: 4em 4em 2em;
   max-width: 400px;
   margin: 50px auto 0;
-  box-shadow: 0 0 1em #222;
   border-radius: 2px;}
-  /* H2 {
-    margin:0 0 50px 0;
-    padding:10px;
-    text-align:center;
-    font-size:30px;
-    color:darken(#e5e5e5, 50%);
-    border-bottom:solid 1px #e5e5e5;
-  } */
-  p {
-    margin: 0 0 3em 0;
-    position: relative;
-  }
-  input {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    outline: none;
-    margin:0;
-  }
-  input[type="text"],
-  input[type="password"] {
-    background: #fff;
-    border: 1px solid #dbdbdb;
-    font-size: 1.6em;
-    padding: .8em .5em;
-    border-radius: 2px;
-  }
-  /* input[type="text"]:focus,
-  input[type="password"]:focus {
-    background: #fff
-  } */
+
   span {
     display:block;
-    background: rgb(173, 66, 60);
     padding: 2px 5px;
+    font-size: 10px;
   }
-  
-  /* input[type="submit"]:hover {
-    
-  } */
 
+  .login-check{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+
+  .login-link{
+      text-decoration: underline;
+  }
+
+  #signup-frame{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin:40px 10px 40px 10px;
+  }
+
+
+  .icon-check-img{
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .signup-confirm{
+      font-size: 30px;
+  }
+
+  .signup-info{
+      font-size: 15px;
+      text-align: center;
+  }
+
+  .login-direct-btn{
+      color: white;
+  }
 }
