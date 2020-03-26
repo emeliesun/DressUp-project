@@ -25,5 +25,6 @@ font-family: San Francisco Pro Text;
 
     a{
         text-decoration: none;
+        color: black;
     }
 }

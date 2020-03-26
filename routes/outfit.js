@@ -54,8 +54,8 @@ app.get('/list', (req,res)=>{
 
 // Show fitting room (shared outfits)
 app.get("/fitting-room", (req, res)=>{
-    let userName = req.session.currentUser.userName;
-    Outfit.find({$and:[{owner: userName},{shared:true}]})
+    let userId = req.session.currentUser._id;
+    Outfit.find({$and:[{owner: userId},{shared:true}]})
         .populate("owner")
         .populate("items")
         .populate("liked_by")
