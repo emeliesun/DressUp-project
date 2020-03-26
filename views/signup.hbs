@@ -5,20 +5,21 @@
 
 <!--enctype="multipart/form-data"
 -->
+<div id="form-frame">
+    <form action="/signup" method="POST" id="form-frame-inside">
+        <input type="text" required name="firstname" placeholder="Firstname" />
+        <input type="text" required name="lastname" placeholder="Lastname" />
 
-<form action="/signup" method="POST">
-    <input type="text" required name="firstname" placeholder="Firstname" />
-    <input type="text" required name="lastname" placeholder="Lastname" />
+        <input type="text" required name="username" placeholder="Username" />
 
-    <input type="text" required name="username" placeholder="Username" />
+        <input type="password" required name="password" placeholder="Password" />
+        <div>
+            <label for="password"><small>Requires minimum 8 characters and 1 number.</small></label>
+        </div>
 
-    <input type="password" required name="password" placeholder="Password" />
-    <div>
-        <label for="password"><small>Requires minimum 8 characters and 1 number.</small></label>
-    </div>
+        <input type="password" required name="password_check" placeholder="Repeat password" />
 
-    <input type="password" required name="password_check" placeholder="Repeat password" />
-
-    <button type="submit">Sign up!</button>
-    <p><small>Already have an account? <a href="/login">Log in!</a></small></p>
-</form>
+        <button type="submit">Sign up!</button>
+        <span>Already have an account? <a href="/login">Log in!</a></span>
+    </form>
+</div>
