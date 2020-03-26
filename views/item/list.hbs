@@ -1,0 +1,13 @@
+
+{{>nav}}
+
+<h4>this is your wardrobe</h4>
+
+<a href="/item/list"><h5>your items</h5></a>
+<a href="/outfit/list"><h5>your outfits</h5></a>
+
+{{#each itemsListData}}
+    <div class="item-thumb">
+        {{> item_thumb}}
+    </div>
+{{/each}}

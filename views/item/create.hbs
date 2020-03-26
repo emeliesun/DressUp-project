@@ -2,21 +2,26 @@
 
 {{!-- Create New Item --}}
 <form action="/item/create" method="post" enctype="multipart/form-data">
+
+
     <label for="title">title</label>
-    <input type="text" name="title" placeholder="This better be unique">
+    <input type="text" name="title" placeholder="This better be unique"><br>
+
     <label for="brand">Brand</label>
     <select name="brand" id="item-brand">
-        <option value="YSL">Party</option>
-        <option value="Gucci">Work</option>
-        <option value="Louis Vuitton">funeral</option>
-    </select>
+        <option value="YSL">YSL</option>
+        <option value="Gucci">Gucci</option>
+        <option value="Louis Vuitton">Louis Vuitton</option>
+    </select><br>
+
     <select name="material" id="item-material">
-        <option value="Mocha">Party</option>
-        <option value="Leather">Work</option>
-        <option value="Cotton">funeral</option>
-    </select>
+        <option value="Mocha">Mocha</option>
+        <option value="Leather">Leather</option>
+        <option value="Cotton">Cotton</option>
+    </select><br>
     
     <label for="item-img">Image </label>
-    <input type="file" name="item-img" />
+    <input type="file" name="item-img" /><br>
+
     <button type="submit" formmethod="POST" id="">Create</button>
 </form>

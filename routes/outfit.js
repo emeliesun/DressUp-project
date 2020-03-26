@@ -14,12 +14,14 @@ app.get("/create", (req, res)=>{
 
 
 app.post("/create", upload.single('outfit-img'),(req,res)=>{
+    let userId = req.session.currentUser._id
     Outfit.create({
         title: req.body.title,
         image: req.body.image,
         occasion: req.body.occasion,
         description: req.body.description,
         image: req.file.filename,
+        owner: userId,
         //items: [],
         // liked_by: [] ,
         shared: false,
@@ -37,11 +39,11 @@ app.post("/create", upload.single('outfit-img'),(req,res)=>{
 app.get('/list', (req,res)=>{
     // debugger
     let userId = req.session.currentUser._id;
-    User.findById(userId)
+    Outfit.find({owner:userId})
       .populate("items")
       .then(outfitData => {
         console.log("the list", outfitData)
-        res.render('outfit/list', {listdata: outfitData, userid:userId})
+        res.render('outfit/list', {outfitListdata: outfitData, userid:userId})
       })
       .catch((err)=> {
         res.send(`Error: ${err}`);
@@ -136,41 +138,60 @@ app.get('/unshare/:id', (req,res)=>{  // move this to axios!
 app.get('/update/:id', (req, res)=>{
     Outfit
         .findById(req.params.id)
-        .populate("items")
-        .populate("liked_by")
-        .then((outfitData)=>{
-            // console.log(outfitData)
-            res.render('outfit/update', {outfit:outfitData})
-        })
+            .populate("items")
+            .populate("liked_by")
+            .then((outfitData)=>{
+                // console.log(outfitData)
+                res.render('outfit/update', {outfit:outfitData})
+            })
+            .catch((err)=> {
+                res.send(`Error: ${err}`);
+            })  
 } )
 
 app.post('/update',   upload.single('outfit-img') , (req, res)=>{
-    debugger
+    // debugger
     let outfitId = req.body.id
-    Outfit.findByIdAndUpdate(outfitId, {
+    if (!req.file) {
+        Outfit.findByIdAndUpdate(outfitId, {
+            title:      req.body.title,
+            occasion:   req.body.occasion,
+            description:req.body.description,
+        })
+        .then((outfitData)=>{
+            console.log("Updated: ", outfitData)
+            res.redirect(`/outfit/detail/${outfitData._id}`)
+        })
+        .catch((err)=> {
+            res.send(`Error: ${err}`);
+        })  
+    } else {
+        Outfit.findByIdAndUpdate(outfitId, {
         title:      req.body.title,
         image:      req.file.filename, 
         occasion:   req.body.occasion,
         description:req.body.description,
-    })
-    .then((outfitData)=>{
-        console.log("Updated: ", outfitData)
-        res.redirect(`/outfit/detail/${outfitData._id}`)
-    })
-    .catch((err)=> {
-        res.send(`Error: ${err}`);
-    })    
+        })
+        .then((outfitData)=>{
+            console.log("Updated: ", outfitData)
+            res.redirect(`/outfit/detail/${outfitData._id}`)
+        })
+        .catch((err)=> {
+            res.send(`Error: ${err}`);
+        })
+    }
+        
 })
 
-// // Delete
-// app.get('/delete/:id', (req, res)=>{
-//     Outfit
-//         .findByIdAndDelete(req.params.id)
-//         .then((outfit)=>{
-//             console.log("deleted: ", outfit)
-//             res.redirect('')
-//         })
-// })
+// Delete
+app.get('/delete/:id', (req, res)=>{
+    Outfit
+        .findByIdAndDelete(req.params.id)
+        .then((outfit)=>{
+            console.log("deleted: ", outfit)
+            res.redirect('/outfit/list')
+        })
+})
 
 
 module.exports = app;

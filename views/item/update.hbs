@@ -1,0 +1,32 @@
+{{>nav}}
+
+<div>
+    <img src="/images/{{item.image}}" alt="" >
+</div>
+
+<form action="/item/update" method="post" enctype="multipart/form-data">
+
+    <input type="text" name="id" value="{{item._id}}" hidden>
+
+    <label for="item-img">Choose an image</label>
+    <input type="file" name="item-img" /><br>
+
+    <label for="title">title</label>
+    <input type="text" name="title" value="{{item.title}}" placeholder="{{item.title}}"><br>
+
+    <label for="material">Material</label>
+    <select name="material" id="item-material"> 
+        <option value="Mocha">Mocha</option>
+        <option value="Leather">Leather</option>
+        <option value="Cotton">Cotton</option>
+    </select><br>
+
+    <label for="brand">Brand</label>
+    <select name="brand" id="item-brand"> 
+        <option value="YSL">YSL</option>
+        <option value="Gucci">Gucci</option>
+        <option value="Louis Vuitton">Louis Vuitton</option>
+    </select><br>
+
+    <button type="submit" formmethod="POST" id="">Update</button>
+</form>
