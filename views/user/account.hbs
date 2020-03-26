@@ -3,18 +3,18 @@
 
 <h1>Hi {{user.username}}! this is your profile!</h1>
 <div>
-    <img src="/{{user.image}}" alt="">
+    <img src="/images/{{user.image}}" alt="">
     
 </div>
-<form action="/user/update/{{user._id}}" method="post">
+<form action="/user/update" method="post" enctype="multipart/form-data">
+
+    <label for="user-img">Upload new image</label>
+    <input type="file" name="user-img" />
+
     <label for="firstname">Firstname: </label>
     <input type="text" name="firstname" value="{{user.firstname}}" placeholder={{user.firstname}}><br>
     <label for="lastname">Lastname: </label>
     <input type="text" name="lastname" value="{{user.lastname}}" placeholder="{{user.lastname}}"><br>
-    <label for="username">Username: </label>
-    <input type="text" name="username" value="{{user.username}}" placeholder="{{user.username}}"><br>
-    <label for="password">Password: </label>
-    <input type="password" name="password" id="" placeholder="(not shown due to security reasons)"><br>
     <button type="submit">Save Changes</button>
 </form>
 

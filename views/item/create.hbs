@@ -1,7 +1,7 @@
 {{>nav}}
 
 {{!-- Create New Item --}}
-<form action="/item/create" method="post">
+<form action="/item/create" method="post" enctype="multipart/form-data">
     <label for="title">title</label>
     <input type="text" name="title" placeholder="This better be unique">
     <label for="brand">Brand</label>

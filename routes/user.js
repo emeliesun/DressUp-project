@@ -1,7 +1,9 @@
-const express = require('express');
-const app = express();
-const User = require('../models/user');
-const Outfit = require('../models/outfit');
+const express     = require('express');
+const app         = express();
+const User        = require('../models/user');
+const Outfit      = require('../models/outfit');
+const multer      = require('multer');
+var upload        = multer({ dest: 'public/images/' });
 
 
 // Home
@@ -65,7 +67,7 @@ app.get('/feed', (req, res) => {
 });
 
 // Settings
-app.get('/user/settings', (req,res)=>{
+app.get('/settings', (req,res)=>{
   let userName = req.session.currentUser.username;
   User.find({
     filter: {
@@ -80,29 +82,34 @@ app.get('/user/settings', (req,res)=>{
     });
 })
 
-// profile
-app.get('/user/account', (req,res)=>{
-
-    let userName = req.session.currentUser.username;
-    User.find({
-      filter: {
-      username: userName
-      },
-      project: {
-        firstname: 1,
-        lastname: 1,
-        username:1,
-        password: 1,
-        image: 1
-      }
-    })
+// Account
+app.get('/account', (req,res)=>{
+    let userId = req.session.currentUser._id;
+    User.findById(userId)
     .then(userData => {
-      res.render('user/feed', { user: userData})
+      res.render('user/account', { user: userData})
     })
     .catch(err => {
       res.send(`Error: ${err}`);
       });
   
+})
+
+// Update account
+app.post('/update', upload.single('user-img'), (req,res)=>{
+  // debugger
+  let userId = req.session.currentUser._id;
+    User.findByIdAndUpdate(userId,{
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        image: req.file.filename
+    })
+    .then((userData) => {
+        console.log(userData)
+        res.redirect('/user/account' )
+    }).catch((err) => {
+        res.send(`Error: ${err}`);
+    });
 })
 
 

@@ -1,7 +1,11 @@
 {{>nav}}
 
 {{!-- Create New Outfit --}}
-<form action="/outfit/create" method="post">
+<form action="/outfit/create" method="post" enctype="multipart/form-data">
+
+    <label for="outfit-img">Choose an image</label>
+    <input type="file" name="outfit-img" />
+
     <label for="title">title</label>
     <input type="text" name="title" placeholder="This better be unique">
     <label for="occasion">Occasion</label>

@@ -1,8 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const Outfit = require('../models/outfit');
-const app = express();
-const User = require('../models/user');
+const express       = require('express');
+const mongoose      = require('mongoose');
+const Outfit        = require('../models/outfit');
+const app           = express();
+const User          = require('../models/user');
+const multer        = require('multer');
+var upload          = multer({ dest: 'public/images/' });
 
 // Create
 app.get("/create", (req, res)=>{
@@ -11,12 +13,13 @@ app.get("/create", (req, res)=>{
 })
 
 
-app.post("/create", (req,res)=>{
+app.post("/create", upload.single('outfit-img'),(req,res)=>{
     Outfit.create({
         title: req.body.title,
         image: req.body.image,
         occasion: req.body.occasion,
         description: req.body.description,
+        image: req.file.filename,
         //items: [],
         // liked_by: [] ,
         shared: false,
@@ -141,18 +144,18 @@ app.get('/update/:id', (req, res)=>{
         })
 } )
 
-app.post('/update/:id',   /*upload.single('recipe-img') ,*/ (req, res)=>{
-    Outfit.findByIdAndUpdate(req.params.id, {
-        title: req.body.title,
-        image: req.params.image, // should change to API 
-        occasion:req.params.occasion,
-        items: req.params.items,
-        liked_by: req.params.likedBy,
-        shared: req.params.shared
+app.post('/update',   upload.single('outfit-img') , (req, res)=>{
+    debugger
+    let outfitId = req.body.id
+    Outfit.findByIdAndUpdate(outfitId, {
+        title:      req.body.title,
+        image:      req.file.filename, 
+        occasion:   req.body.occasion,
+        description:req.body.description,
     })
     .then((outfitData)=>{
         console.log("Updated: ", outfitData)
-        res.redirect(`/detail/${outfitData._id}`)
+        res.redirect(`/outfit/detail/${outfitData._id}`)
     })
     .catch((err)=> {
         res.send(`Error: ${err}`);
