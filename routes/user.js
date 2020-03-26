@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-// const bcrypt = require('bcrypt');
 const User = require('../models/user');
 const Outfit = require('../models/outfit');
 
@@ -32,7 +31,7 @@ app.get('/home', (req, res) => {
     
 });
 
-// Feed
+// Feed (friend requests)
 app.get('/feed', (req, res) => {
   let userName = req.session.currentUser.username;
   User.find({
@@ -82,7 +81,7 @@ app.get('/user/settings', (req,res)=>{
 })
 
 // profile
-app.get('/user/profile', (req,res)=>{
+app.get('/user/account', (req,res)=>{
 
     let userName = req.session.currentUser.username;
     User.find({
@@ -157,16 +156,24 @@ app.get('/add-friend/:id', (req,res)=>{
 })
 
 
-// 
+// temp route for User Account page
+app.get('/account', (req,res)=>{
+  //debugger
+  let userId = req.session.currentUser._id;
+  User.findById(userId)
+   .then(userData => {
+     console.log(userData)
+     res.render('user/account', { user: userData})
+   })
+   .catch(err => {
+    res.send(`Error: ${err}`);
+    });
+})
 
-// app.get('/logout', (req, res) => {
-//   User.find()
-//     .then(user => {
-//       res.render('user/logout');
-//     })
-//     .catch(err => {
-//       console.log('Error, something went wrong.');
-//     });
-// });
+// Logout
+app.get('/logout', (req, res) => {
+  req.session.destroy();
+  res.redirect("/index");
+});
 
 module.exports = app;

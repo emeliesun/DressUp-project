@@ -34,8 +34,8 @@ app.post("/create", (req,res)=>{
 app.get('/list', (req,res)=>{
     // debugger
     let userId = req.session.currentUser._id;
-    Outfit.find({owner: userId})
-    //   .populate("")
+    User.findById(userId)
+      .populate("items")
       .then(outfitData => {
         console.log("the list", outfitData)
         res.render('outfit/list', {listdata: outfitData, userid:userId})
@@ -49,13 +49,24 @@ app.get('/list', (req,res)=>{
 // Show fitting room (shared outfits)
 app.get("/fitting-room", (req, res)=>{  
     let userId = req.session.currentUser._id;
-    Outfit.find({$and:[{owner: userId},{shared:true}]})
+    Outfit.find({
+        $and:[
+            {owner: userId},
+            {shared:true}
+        ]})
         .populate("owner")
         .populate("items")
         .populate("liked_by")
         .then((outfitsData)=>{
-            console.log("fitting room list: ", outfitsData)
-            res.render('outfit/fitting_room', {sharedList: outfitsData})
+            let outfits = outfitsData.map((outfit)=> {
+                let outfitMapped = outfit;
+                outfitMapped.nr_likes = outfit.liked_by.length;
+                return outfitMapped;
+            })
+
+            outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
+            console.log("fitting room list: ", outfits)
+            res.render('outfit/fitting_room', {sharedList: outfits})
         })
         .catch((err)=> {
             res.send(`Error: ${err}`);

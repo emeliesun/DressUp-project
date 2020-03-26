@@ -20,22 +20,26 @@ const userSchema = new Schema({
     required: true, 
     unique: true 
   },
-  outfits: {
-    type:Array,
-    default: []
-  },
-  friend_request: {
-    type: Array, 
-    default: []
-  },
-  friends: { 
-    type: Array, 
-    default: []
-  },
+  outfits: [{
+    type: mongoose.Types.ObjectId, 
+    ref: "outfits"
+  }],
+  friend_request: [{
+    type: mongoose.Types.ObjectId, 
+    ref: "users"
+  }],
+  friends: [{
+    type: mongoose.Types.ObjectId, 
+    ref: "users"
+  }],
   image: { type: String },
   new_reqs: { 
     type: Boolean,
     default: false
+  },
+  items: { 
+    type: mongoose.Types.ObjectId, 
+    ref: "items" 
   }
 });
 

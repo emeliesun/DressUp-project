@@ -9,8 +9,6 @@ const Outfit        = require('./models/outfit');
 const Item          = require('./models/item');
 const bodyParser    = require('body-parser');
 // const cookieParser  = require('cookie-parser');
-const multer        = require('multer');
-var upload          = multer({ dest: 'public/' });
 const session       = require("express-session");
 const MongoStore    = require("connect-mongo")(session);
 

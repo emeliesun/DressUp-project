@@ -1,1 +1,22 @@
 {{>nav}}
+
+{{!-- Create New Item --}}
+<form action="/item/create" method="post">
+    <label for="title">title</label>
+    <input type="text" name="title" placeholder="This better be unique">
+    <label for="brand">Brand</label>
+    <select name="brand" id="item-brand">
+        <option value="YSL">Party</option>
+        <option value="Gucci">Work</option>
+        <option value="Louis Vuitton">funeral</option>
+    </select>
+    <select name="material" id="item-material">
+        <option value="Mocha">Party</option>
+        <option value="Leather">Work</option>
+        <option value="Cotton">funeral</option>
+    </select>
+    
+    <label for="item-img">Image </label>
+    <input type="file" name="item-img" />
+    <button type="submit" formmethod="POST" id="">Create</button>
+</form>
