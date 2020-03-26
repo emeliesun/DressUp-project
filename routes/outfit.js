@@ -10,6 +10,7 @@ app.get("/create", (req, res)=>{
     
 })
 
+
 app.post("/create", (req,res)=>{
     Outfit.create({
         title: req.body.title,
@@ -29,22 +30,15 @@ app.post("/create", (req,res)=>{
     })
 })
 
+// Outfit List
 app.get('/list', (req,res)=>{
-    debugger
-    let userName = req.session.currentUser.username;
-    User.find({
-      filter: {
-       username: userName
-      },
-      project: {
-       username:1,
-       outfits: 1
-      }
-     })
-      .populate("outfits")
+    // debugger
+    let userId = req.session.currentUser._id;
+    Outfit.find({owner: userId})
+    //   .populate("")
       .then(outfitData => {
         console.log("the list", outfitData)
-        res.render('outfit/list', {listdata: outfitData, username:userName})
+        res.render('outfit/list', {listdata: outfitData, userid:userId})
       })
       .catch((err)=> {
         res.send(`Error: ${err}`);
@@ -72,6 +66,9 @@ app.get("/fitting-room", (req, res)=>{
 // Show feed
 app.get('/feed/:id', (req,res)=>{
     Outfit.findById(req.params.id)
+        .populate("liked_by")
+        // .populate("items")
+        // .populate("owner")
         .then(outfitData => {
             res.render('outfit/outfit_feed', {outfit:outfitData})
         })
@@ -95,13 +92,13 @@ app.get("/detail/:id", (req, res)=>{
 })
 
 // Share
-app.get('/share/:id', (req,res)=>{
+app.get('/share/:id', (req,res)=>{  // move this to axios!
     Outfit.findByIdAndUpdate(req.params.id, {
         shared: true
     })
     .then((outfitData)=>{
         console.log("Shared: ", outfitData)
-        res.redirect(`/outfit/detail/${outfitData._id}`)
+        res.redirect(`/outfit/feed/${outfitData._id}`)
     })
     .catch((err)=> {
         res.send(`Error: ${err}`);
@@ -109,13 +106,13 @@ app.get('/share/:id', (req,res)=>{
 })
 
 // Unshare
-app.get('/unshare/:id', (req,res)=>{
+app.get('/unshare/:id', (req,res)=>{  // move this to axios!
     Outfit.findByIdAndUpdate(req.params.id, {
         shared: false
     })
     .then((outfitData)=>{
         console.log("Shared: ", outfitData)
-        res.redirect(`/outfit/detail/${outfitData._id}`)
+        res.redirect(`/outfit/feed/${outfitData._id}`)
     })
     .catch((err)=> {
         res.send(`Error: ${err}`);
