@@ -3,7 +3,7 @@ const app = express();
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
-app.get("/index", (req, res)=>{
+app.get(["/index","/"], (req, res)=>{
     res.render('intro')
 })
 
