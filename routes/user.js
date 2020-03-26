@@ -2,19 +2,30 @@ const express = require('express');
 const app = express();
 // const bcrypt = require('bcrypt');
 const User = require('../models/user');
-
-
-// const mongoose      = require('mongoose');
-// mongoose.set('useFindAndModify', false);
+const Outfit = require('../models/outfit');
 
 
 // Home
 app.get('/home', (req, res) => {
   // debugger
   let userName = req.session.currentUser.username;
-  res.render('user/home',{
-    welcomeMessage: `Welcome ${userName}`
-  })
+  let userId = req.session.currentUser._id;
+  Outfit.find({
+      $and : [
+      {shared:true}
+      , {owner:{_id:userId}}
+      ]
+    })
+    .sort({liked_by:-1})
+    .limit(4)
+    .populate({path:'owner', populate:{path:'friends'}})
+    .then (outfitData => {
+      res.render('user/home',{outfit:outfitData,username:userName})
+    })
+    .catch(err => {
+      res.send(`Error: ${err}`);
+    });
+    
 });
 
 // Feed
