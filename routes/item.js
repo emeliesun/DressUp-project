@@ -14,6 +14,7 @@ app.get("/create", (req, res)=>{
 })
 
 app.post('/create', upload.single('item-img'), (req,res)=>{
+    debugger
     let userId = req.session.currentUser._id;
     Item.create({
         title: req.body.title,
