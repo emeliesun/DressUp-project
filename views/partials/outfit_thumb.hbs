@@ -1,12 +1,22 @@
 {{!-- used in /outfit/list --}}
 
-<a href='/outfit/detail/{{this._id}}'>
-<div class="desc">
-    <h2>{{this.title}}</h2>
-    <h4>Occasion: {{this.occasion}}</h4>
-    <h4>Amount of itmes: {{this.items.length}}</h4>
+<div id="shared_outfit_thumb_framework">
+    <a href='/outfit/detail/{{this._id}}'>
+        <div class="framework_inside">
+            <div class="desc">
+                <h3>{{this.title}}</h3>
+                <div class="desc-frame">
+                    <h4>Occasion: </h4>
+                    <p> {{this.occasion}}</p>
+                </div>
+                <div  class="desc-frame">
+                    <h4>Amount of items: </h4>
+                    <p> {{this.items.length}}</p>
+                </div>
+            </div>
+            <div class="thumb-img">
+                <img src="/{{this.image}}" alt="Outfit" class="img-thumb">
+            </div>
+        </div>
+    </a>
 </div>
-<div class="thumb-img">
-    <img src="/{{this.image}}" alt="Outfit">
-</div>
-</a>
