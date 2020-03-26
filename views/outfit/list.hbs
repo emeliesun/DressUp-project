@@ -2,10 +2,13 @@
 
 <h4>this is your wardrobe</h4>
 
+<a href="/item/list"><h5>your items</h5></a>
+<a href="/outfit/list"><h5>your outfits</h5></a>
+
 {{!-- 2 buttons that opens up 1. outfits and 2. items.
         Add eventlistener to make them visible/unvisible --}}
 
-{{#each listdata}}
+{{#each outfitListdata}}
     <div class="shared-outfit">
         {{> outfit_thumb}}
     </div>

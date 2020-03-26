@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
   title: { type: String, required: true },
   image: { type: String },
-  material: {type: String, enum: ['mocha', 'leather', 'cotton']},
+  material: {type: String, enum: ['Mocha', 'Leather', 'Cotton']},
   brand: {type: String, enum: ['YSL', 'Gucci', 'Louis Vuitton']},
   owner: { 
     type: mongoose.Types.ObjectId, 

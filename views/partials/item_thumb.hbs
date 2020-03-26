@@ -2,15 +2,17 @@
 {{!-- used in /outfit/detail --}}
 
 <div class="item-row">
+    <a href="/item/detail/{{this._id}}">
         <div>
             <h5>{{this.title}}</h5>
-            <p>.{{this.material}}  -------- .{{this.brand}}</p>
-            
+            <p>{{this.material}} </p>
+            <p>{{this.brand}}</p> 
         </div>
-
         <div>
-            <img src="/images/trash-4-24.png" alt="" onclick="myScript(this)">
-            {{!-- <img src="/{{this.img}}" alt=""> --}}
-        </div>        
+            <img src="/images/{{this.image}}" alt="" >
+        </div>   
+    </a>
+             
 </div>
 
+{{!-- onclick="myScript(this)" --}}
