@@ -16,11 +16,15 @@ app.get('/home', (req, res) => {
       , {owner:{_id:userId}}
       ]
     })
-    .sort({liked_by:-1})
-    .limit(4)
     .populate({path:'owner', populate:{path:'friends'}})
     .then (outfitData => {
-      res.render('user/home',{outfit:outfitData,username:userName})
+      let outfits = outfitData.map((outfit)=> {
+        let outfitMapped = outfit;
+        outfitMapped.nr_likes = outfit.liked_by.length;
+        return outfitMapped;
+      })
+      outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
+      res.render('user/home',{outfit:outfits,username:userName})
     })
     .catch(err => {
       res.send(`Error: ${err}`);

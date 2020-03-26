@@ -8,14 +8,17 @@
     <p class="sub-title">{{outfit.occasion}}</p>
 </div>
 
+{{#if outfit.shared}}
+    <div><a href="/outfit/unshare/{{outfit._id}}">Unshare sign</a></div>
+{{else}}
+    <div><a href="/outfit/share/{{outfit._id}}">Share sign</a></div>
+{{/if}}
 
-
-    <div><a href="/outfit/unshare/{{outfit._id}}">unshare sign</a></div>
+    
 
 
 <div class="item-list">
     {{#each this.liked_by}}
         {{> outfit_feed_user_thumb}}    
-    {{/each}}    
 </div>
 
