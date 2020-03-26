@@ -5,6 +5,37 @@
 
 <!--enctype="multipart/form-data"
 -->
+
+<form action="/signup" method="POST" id="form-frame-inside">
+  <div class="form-group">
+    <label for="firstname">Firstname</label>
+    <input class="form-control" type="text" placeholder="Firstname" name="firstname"> 
+  </div>
+
+   <div class="form-group">
+    <label for="lastname">Lastname</label>
+    <input class="form-control" type="text" placeholder="Lastname" name="lastname">
+    
+  </div>
+   <div class="form-group">
+    <label for="username">Username</label>
+    <input class="form-control" type="text" placeholder="Username" name="username">
+    
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password">
+  </div>
+  <div class="form-group">
+    <label for="password_check">Repeat password</label>
+    <input type="password" class="form-control" id="password_check" name="password_check" >
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Signup</button>
+</form>
+
+
+{{!-- 
 <div id="form-frame">
     <form action="/signup" method="POST" id="form-frame-inside">
         <input type="text" required name="firstname" placeholder="Firstname" />
@@ -22,4 +53,4 @@
         <button type="submit">Sign up!</button>
         <span>Already have an account? <a href="/login">Log in!</a></span>
     </form>
-</div>
+</div> --}}
