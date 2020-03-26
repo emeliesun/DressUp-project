@@ -1,8 +1,11 @@
 {{>nav}}
+{{> create_btn }}
 
 <div id="top-image">
     <img src="/{{outfit.image}}" alt="" class="outfit-feed-img">
-    </div>
+</div>
+
+
 <div id="outfit-feed-info">
     <div id="outfit-feed-description">
         <h3>{{outfit.title}}</h3>
@@ -14,17 +17,20 @@
 
     {{#if outfit.shared}}
             <div><a href="/outfit/unshare/{{outfit._id}}"><img src="/../images/icon_unshare.png" alt="Unshare" class="outfit-feed-icon-unshare"></a></div>
-        {{else}}
+    {{else}}
             <div><a href="/outfit/share/{{outfit._id}}"><img src="/../images/icon_share.png" alt="Share" class="outfit-feed-icon-share"></a></div>
     {{/if}}
 </div>
     
 <a href="/outfit/delete/{{outfit._id}}"><button class="delete-btn" id="delete-outfit">Delete</button></a>
-
 <a href="/outfit/update/{{outfit._id}}"><button class="delete-btn" id="delete-outfit">Update</button></a>
 
+
+
+
+<h2 id="outfit-liked-by">Your outfit is liked by:</h4>
 <div class="item-list">
     {{#each outfit.liked_by}}
         {{> outfit_feed_user_thumb}}   
-        {{/each}} 
+    {{/each}} 
 </div>

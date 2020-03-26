@@ -41,7 +41,6 @@
         border: 1px solid #ddd;
         border-radius: 4px;
         padding: 5px;
-        /* width: 150px; */
         margin-left: 0px;
         margin-right: 0px;
         display: flex;
@@ -92,6 +91,7 @@
     #outfit-feed-info{
         display: flex;
         flex-direction: row;
+        margin-top: 30px;
     }
 
     #outfit-feed-description{
@@ -102,14 +102,39 @@
 
     .outfit-feed-icon-unshare{
         width: 50px;
+        position: fixed;
+        margin: 0px 20px 0px 160px
     }
     .outfit-feed-icon-share{
         width: 25px;
-        margin-top: 13px;
-        margin-left: 15px;
+        position: fixed;
+        margin: 10px 0px 0px 175px;
     }
 
+/*outfit_feed_user_thumb.hbs */
+    #outfit-liked-by{
+        font-size: 20px;
+    }
 
+    .liked-by-friends{
+        font-size: 15px;
+    }
+
+    .liked-by-friends-ul{
+        margin: 0;
+    }
+
+    /* outfit/create */
+    #createH2{
+        font-size: xx-large;
+        display: flex;
+        justify-content: center;
+        margin: 30px 0 30px 0px;
+    }
+
+    #commentfield{
+        height: 200px;
+    }
 }
 
 

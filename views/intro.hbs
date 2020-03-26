@@ -1,12 +1,11 @@
-{{!-- {{>nav_intro}} --}}
-
-{{!-- <img src="../images/fit_room.png" class="img-fluid" alt="Responsive image" id="intro_img"> --}}
+{{>nav_intro}}
 
 <section id="intro">
-        <img src="../images/icon-manikin.png" alt="">
-        <h1>DressUp</h1>
-        <h3>Welcome to your digital fitting-room!</h3>
-        <a href="/login"><button id="login-btn">Login</button></a>
-        <a href="/signup"><button id="signup-btn">signup</button></a>
-        
-    </section>
+    <div class="intro_info">
+        <h1 class="dress_up">DressUp</h1>
+        <div id="btn_intro">
+            <button type="button" class="btn btn-primary" id="btn-primary-green"><a href="/login" class="login-direct-btn">Login!</a></button>
+            <button type="button" class="btn btn-primary" id="btn-primary-orange"><a href="/signup" class="login-direct-btn">Signup!</a></button>
+        </div>
+    </div>
+</section>
