@@ -27,6 +27,12 @@ font-family: San Francisco Pro Text;
         text-decoration: none;
         color: black;
     }
+
+    #create-btn{
+        position: fixed;
+        margin: 7px 310px 10px 10px;
+        height: 50px;
+    }
     
 /*Insert ;all headings and make them work throughout the page)*/
 

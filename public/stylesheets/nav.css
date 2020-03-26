@@ -1,10 +1,10 @@
 @media screen and (max-width: 600px) {
-  .topnav a {
-    float: none;
-    width: 100%;
-  }
+    .topnav a {
+        float: none;
+        width: 100%;
+    }
     #navbar{
-        background-color: rgb(173, 66, 60);
+    background-color: rgb(173, 66, 60);
         height: 110px;
         text-decoration: none;
         display: flex;
@@ -31,24 +31,18 @@
     }
 
     .navlink {
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
     }
 
     .navlink:hover{
         text-decoration: underline;
         color: black;
     }
-    /* 
-    .active, .navlink:focus{
-    color: white;
-    font-style: italic;
-    } 
-    */
 
     #navH3 {
-    font-family: San Francisco Pro Text;
+        font-family: San Francisco Pro Text;
         font-size: x-large;
         color: black;
         margin: 3px;

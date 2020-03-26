@@ -1,5 +1,5 @@
 @media screen and (max-width: 600px) {
-  .topnav a {
+ .topnav a {
     float: none;
     width: 100%;
   }
@@ -9,9 +9,24 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url(../images/fit_room.png);
-    background-repeat: round;
-    height: -webkit-fill-available;
+    background-image: url(../images/fitting_room_intro.jpeg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 540px;
+  }
+
+  .intro_info{
+    margin: 0 0 160px 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dress_up{
+    font-size: 30px;
+    color: rgb(173, 66, 60);
+    font-weight: bold;
   }
 
   #btn-primary {
@@ -23,12 +38,50 @@
     color: white;
   }
 
+  #btn_intro{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  #btn-primary-orange{
+    background-color: rgb(230, 169, 134) !important;
+    border-color:rgb(230, 169, 134) !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-left: 15px;
+  }
+
+  #btn-primary-green{
+    background-color: rgb(125, 179, 134) !important;
+    border-color:rgb(125, 179, 134) !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-right: 15px;
+  }
+
+   #btn-primary-green-login{
+    background-color: rgb(125, 179, 134) !important;
+    border-color:rgb(125, 179, 134) !important;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+
+
 #form-frame-inside {
-  background: #fff;
-  padding: 4em 4em 2em;
-  max-width: 400px;
-  margin: 50px auto 0;
-  border-radius: 2px;}
+    background: #fff;
+    padding: 4em 4em 2em;
+    max-width: 400px;
+    margin: 50px auto 0;
+    border-radius: 2px;
+}
 
   span {
     display:block;
@@ -44,15 +97,15 @@
 
 
   .login-link{
-      text-decoration: underline;
+    text-decoration: underline;
   }
 
   #signup-frame{
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      align-items: center;
-      margin:40px 10px 40px 10px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin:40px 10px 40px 10px;
   }
 
 
@@ -64,15 +117,15 @@
   }
 
   .signup-confirm{
-      font-size: 30px;
+    font-size: 30px;
   }
 
   .signup-info{
-      font-size: 15px;
-      text-align: center;
+    font-size: 15px;
+    text-align: center;
   }
 
   .login-direct-btn{
-      color: white;
+    color: white;
   }
 }
