@@ -1,4 +1,6 @@
 {{>nav}}
+{{> side_menu}}
+{{> sidemenu_open_btn}}
 
 <h2 id="createH2">Create New Outfit</h2>
 <div id="form-frame">
@@ -12,9 +14,7 @@
 
         <div class="form-group">
             <label for="title">Title:</label>
-
             <input type="text" name="title" required class="form-control" placeholder="This better be unique">
-
         </div>
 
         <div class="form-group">
@@ -23,7 +23,7 @@
                 <option value="Make a choice">Make a choice</option>
                 <option value="Party">Party</option>
                 <option value="Work">Work</option>
-                <option value="funeral">Funeral</option>
+                <option value="Funeral">Funeral</option>
                 <option value="Dinner">Dinner</option>
                 <option value="Workout">Workout</option>
                 <option value="Date">Date</option>
@@ -35,8 +35,8 @@
         <label for="description">Description:</label>
         <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="What is on your mind about this outfit?"></textarea>
     </div>
-
-
         <button type="submit" class="btn btn-primary" id="btn-primary-green-login" id="">Create</button>
     </form>
 </div>
+
+

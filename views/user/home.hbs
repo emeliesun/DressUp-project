@@ -1,7 +1,7 @@
 {{>nav}}
 {{> create_btn }}
-{{!-- <p>Welcome {{username}}</p> --}}
-
+{{> side_menu}}
+{{> sidemenu_open_btn}}
 
 <div id="home-frame">
     <div id="fitting-room-frame">
@@ -23,7 +23,7 @@
             <h2 class="mainH2">Your Genies</h2class="mainH2">
         </div>
         <div>
-            {{#each outfit.owner.friends}} 
+            {{#each friendsList}} 
                 <a href='/genie/fitting-room/{{this._id}}'>
                     <div class="shared-outfit">
                         <img src="/{{this.image}}" alt="">
