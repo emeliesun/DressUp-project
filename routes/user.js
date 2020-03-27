@@ -28,7 +28,8 @@ app.get('/home', (req, res) => {
         return outfitMapped;
       })
       outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
-      res.render('user/home',{outfit:outfits,username:userName})
+      let friendsList = outfitData[0].owner.friends;
+      res.render('user/home',{outfit:outfits,username:userName, friendsList:friendsList})
     })
     .catch(err => {
       res.send(`Error: ${err}`);
@@ -115,7 +116,6 @@ app.post('/update', upload.single('user-img'), (req,res)=>{
     });
 })
 
-
 // Add-friend
 app.get('/add-friend', (req, res) => {
   // debugger
@@ -163,21 +163,6 @@ app.get('/add-friend/:id', (req,res)=>{
       res.send(`Error: ${err}`);
     });
 
-})
-
-
-// temp route for User Account page
-app.get('/account', (req,res)=>{
-  //debugger
-  let userId = req.session.currentUser._id;
-  User.findById(userId)
-   .then(userData => {
-     console.log(userData)
-     res.render('user/account', { user: userData})
-   })
-   .catch(err => {
-    res.send(`Error: ${err}`);
-    });
 })
 
 // Logout
