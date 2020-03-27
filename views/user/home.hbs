@@ -12,7 +12,7 @@
                 {{#each outfit}}
                 <a href="/outfit/feed/{{this._id}}">
                     <div class="shared-outfit-home">
-                        <img src="/{{this.image}}" alt="">
+                        <img src="/images/{{this.image}}" alt="">
                         <p>{{this.title}}</p>
                     </div>
                 </a>     
@@ -29,7 +29,7 @@
             {{#if friendsList}}
                 {{#each friendsList}} 
                     <a href='/genie/fitting-room/{{this._id}}'>
-                        <div class="shared-outfit">
+                        <div class="shared-outfit-home">
                             <img src="/images/{{this.image}}" alt="">
                             <p>{{this.firstname}}</p>
                         </div>
