@@ -4,6 +4,58 @@
     width: 100%;
   }
 
+  .shared-outfit {
+      width: 40vw;
+      height: 30vh;
+    max-height: 22vh;
+  }
+  .shared-outfit p{
+
+  }
+  
+  .mainH2 {
+      margin-top: 20px;
+  }
+  .shared-outfit img{
+    width: 100%;
+    max-height: 18vh;
+    /* height: 15vh; */
+    border-radius: 5px;
+}
+
+#fitting-room-frame {
+    width: 96vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center
+}
+
+#fitting-room-frame-inside {
+    width: 95vw;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#fitting-room-frame-inside a{
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    align-items: center
+}
+
+    .list-group-item {
+        margin: 2px auto;
+        width: 96vw;
+    }
+
     /* shared_outfit_thumb.hbs,  outfit/list */
     #shared_outfit_thumb_framework{
         background: white;
