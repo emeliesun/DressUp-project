@@ -1,6 +1,4 @@
 
-const axios = require('axios');
-
 // Add send request functionality to plus on user_thumb partial
 // var $friendAddBtns = document.querySelectorAll('.add-friend-btn');
 // $friendAddBtns.forEach(($btn)=>{

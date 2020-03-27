@@ -6,10 +6,16 @@
     position: fixed;
     right: 0px;
     bottom: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 50;
+    /* align-items: center; */
+    border-left: 1px solid lightgrey;
     
 }
 
-#side-menu-open-btn {
+#sidemenu-open-btn {
     width: 50px;
     position: fixed;
     right: 0px;
@@ -18,4 +24,24 @@
 
 .invisible {
     visibility: hidden;
-}                                                    
+}    
+
+.visible {
+    visibility: visible;
+}
+
+#sidemenu-close-btn {
+    width: 50px;
+    position: absolute;
+    left: -20px;
+    top: 20vh;
+    right: px;
+    top: 20vh;
+    z-index: 70;
+}
+
+#logout-btn {
+    position: absolute;
+    bottom: 20px;
+    
+}

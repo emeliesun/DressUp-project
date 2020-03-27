@@ -28,7 +28,8 @@ app.get('/home', (req, res) => {
         return outfitMapped;
       })
       outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
-      res.render('user/home',{outfit:outfits,username:userName})
+      let friendsList = outfitData[0].owner.friends;
+      res.render('user/home',{outfit:outfits,username:userName, friendsList:friendsList})
     })
     .catch(err => {
       res.send(`Error: ${err}`);
@@ -114,7 +115,6 @@ app.post('/update', upload.single('user-img'), (req,res)=>{
         res.send(`Error: ${err}`);
     });
 })
-
 
 // Add-friend
 app.get('/add-friend', (req, res) => {
