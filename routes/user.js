@@ -12,6 +12,7 @@ app.get('/home', (req, res) => {
   let userName = req.session.currentUser.username;
   let userId = req.session.currentUser._id;
   let friendsList;
+  let outfits = [];
   Outfit.find({
       $and : [
       {shared:true}
@@ -24,7 +25,7 @@ app.get('/home', (req, res) => {
     })
     .then (outfitData => {
       if (outfitData.length>0) {
-        let outfits = outfitData.map((outfit)=> {
+        outfits = outfitData.map((outfit)=> {
         let outfitMapped = outfit;
         outfitMapped.nr_likes = outfit.liked_by.length;
         return outfitMapped;
@@ -39,9 +40,9 @@ app.get('/home', (req, res) => {
           .catch(err => {
             res.send(`Error: ${err}`);
           });
-          outfits = [];
+          // outfits = [];
       }
-      
+      console.log(outfits)
       res.render('user/home',{outfit:outfits,username:userName, friendsList:friendsList})
     })
     .catch(err => {
