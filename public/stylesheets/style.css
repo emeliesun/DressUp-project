@@ -61,6 +61,10 @@ font-family: San Francisco Pro Text;
       right: 5vw;
       z-index: 20;
     }
+
+    #form-frame{
+        margin: auto 15px;
+    }
     
 /*Insert ;all headings and make them work throughout the page)*/
 
