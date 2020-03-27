@@ -1,34 +1,35 @@
 {{>nav}}
 {{> create_btn }}
+<div id="detail-form">
+    <div id="top-image">
+        <img src="/images/{{outfit.image}}" alt="Outfit-image">
+    </div>
 
-<div id="top-image">
-    <img src="/images/{{outfit.image}}" alt="">
+    <div id="description">
+            <div>
+                <h2 class="title">{{outfit.title}}</h2>
+                <p class="sub-title">{{outfit.occasion}}</p>
+                <p class="sub-title">{{outfit.description}}</p>
+            </div>
+
+            <div id="icon-div">
+                <a href="/outfit/delete/{{outfit._id}}"><img src="/images/delete_bin.png" alt="Delete" class="outfit-feed-icons"></a>
+                <a href="/outfit/update/{{outfit._id}}"><img src="/images/icon_update.png" alt="Update" class="outfit-feed-icons"></a>
+                {{#if outfit.shared}}
+                    <div><a href="/outfit/unshare/{{outfit._id}}"> <img src="/images/icon_unshare.png" alt="Unshare" class="outfit-feed-icons"></a></div>
+                {{else}}
+                    <div><a href="/outfit/share/{{outfit._id}}"> <img src="/images/icon_share.png" alt="Share" class="outfit-feed-iconse"></a></div>
+                {{/if}}
+            </div>
+    </div>
+
+    <div class="item-list">
+        {{#each outfit.items}}
+            {{> item_thumb}}    
+        {{/each}}    
+    </div>
+
+    <a href="/outfit/list"><img src="/images/back_btn.png" alt="Back" class="back-btn"></a>
 </div>
-
-<div id="description">
-        <div>
-            <h2 class="title">{{outfit.title}}</h2>
-            <p class="sub-title">{{outfit.occasion}}</p>
-        </div>
-
-        <div id="icon-div">
-            <a href="/outfit/delete/{{outfit._id}}"><img src="/images/delete_bin.png" alt="Delete" class="outfit-feed-icons"></a>
-            <a href="/outfit/update/{{outfit._id}}"><img src="/images/icon_update.png" alt="Update" class="outfit-feed-icons"></a>
-            {{#if outfit.shared}}
-                <div><a href="/outfit/unshare/{{outfit._id}}"> <img src="/images/icon_unshare.png" alt="Unshare" class="outfit-feed-icons"></a></div>
-            {{else}}
-                <div><a href="/outfit/share/{{outfit._id}}"> <img src="/images/icon_share.png" alt="Share" class="outfit-feed-iconse"></a></div>
-            {{/if}}
-        </div>
-</div>
-
-<div class="item-list">
-    {{#each outfit.items}}
-        {{> item_thumb}}    
-    {{/each}}    
-</div>
-
-<a href="/outfit/list"><img src="/images/back_btn.png" alt="Back" class="back-btn"></a>
-
 
 

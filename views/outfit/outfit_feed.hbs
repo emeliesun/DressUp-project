@@ -6,27 +6,27 @@
 </div>
 
 
-<div id="outfit-feed-info">
-    <div id="outfit-feed-description">
-        <h3>{{outfit.title}}</h3>
-        <div class="desc-frame">
-                <h4>Occasion: </h4>
-                <p> {{outfit.occasion}}</p>
+<div id="description">
+    <div id="outfit-feed-info">
+            <div id="outfit-feed-description">
+                <h3>{{outfit.title}}</h3>
+                <div class="desc-frame">
+                    <h4>Occasion: </h4>
+                    <p> {{outfit.occasion}}</p>
+                </div>
+            </div>
+
+        <div id="icon-div">
+            <a href="/outfit/delete/{{outfit._id}}"><img src="/images/delete_bin.png" alt="Delete" class="outfit-feed-icons"></a>
+            <a href="/outfit/update/{{outfit._id}}"><img src="/images/icon_update.png" alt="Update" class="outfit-feed-icons"></a>
+            {{#if outfit.shared}}
+                <div><a href="/outfit/unshare/{{outfit._id}}"> <img src="/images/icon_unshare.png" alt="Unshare" class="outfit-feed-icons"></a></div>
+            {{else}}
+                <div><a href="/outfit/share/{{outfit._id}}"> <img src="/images/icon_share.png" alt="Share" class="outfit-feed-iconse"></a></div>
+            {{/if}}
         </div>
     </div>
-
-    {{#if outfit.shared}}
-            <div><a href="/outfit/unshare/{{outfit._id}}"><img src="/images/icon_unshare.png" alt="Unshare" class="outfit-feed-icon-unshare"></a></div>
-    {{else}}
-            <div><a href="/outfit/share/{{outfit._id}}"><img src="/images/share_btn.png" alt="Share" class="outfit-feed-icon-unshare"></a></div>
-    {{/if}}
 </div>
-    
-<a href="/outfit/delete/{{outfit._id}}"><button class="delete-btn" id="delete-outfit">Delete</button></a>
-<a href="/outfit/update/{{outfit._id}}"><button class="delete-btn" id="delete-outfit">Update</button></a>
-
-
-
 
 <h2 id="outfit-liked-by">Your outfit is liked by:</h4>
 <div class="list-group"></div>

@@ -157,10 +157,13 @@
     }
 
 /*  outfit/feed/id*/
+    #detail-form{
+        
+    }
     #top-image{
         display: flex;
         justify-content: center;
-
+        margin: auto;
     }
 
     .outfit-feed-img{
