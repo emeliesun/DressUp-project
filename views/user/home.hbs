@@ -8,46 +8,38 @@
     <div id="fitting-room-frame">
         <h2 class="mainH2">Your Fitting Room</h2>
         <div id="fitting-room-frame-inside">
-            {{#each outfit}}
-            <a href="/outfit/feed/{{this._id}}">
-                <div class="shared-outfit-home">
-                    <img src="/{{this.image}}" alt="">
-                    <p>{{this.title}}</p>
-                </div>
-            </a>     
-            {{/each}} 
+            {{#if outfit}}
+                {{#each outfit}}
+                <a href="/outfit/feed/{{this._id}}">
+                    <div class="shared-outfit-home">
+                        <img src="/{{this.image}}" alt="">
+                        <p>{{this.title}}</p>
+                    </div>
+                </a>     
+                {{/each}} 
+            {{else}}
+                <p>Looks like you fitting room is empty! </p>
+            {{/if}}
         </div>
     </div>
 
     <div id="fitting-room-frame">
-        <h2 class="mainH2">Your Genies</h2>
-        <div id="fitting-room-frame-inside">
-            {{#each friendsList}}
-            <a href="/genie/fitting-room/{{this._id}}">
-                <div class="shared-outfit-home">
-                    <img src="/{{this.image}}" alt="">
-                    <p>{{this.firstname}}</p>
-                </div>
-            </a>
-            {{/each}}
-        </div>
-    </div>
-{{!-- ///////////////////////////// --}}
-    {{!-- <div>
-        <div>
             <h2 class="mainH2">Your Genies</h2class="mainH2">
-        </div>
-        <div>
-            {{#each friendsList}} 
-                <a href='/genie/fitting-room/{{this._id}}'>
-                    <div class="shared-outfit">
-                        <img src="/{{this.image}}" alt="">
-                        <p>{{this.firstname}}</p>
-                    </div>
-                </a>
-            {{/each}}
+        <div id="fitting-room-frame-inside">
+            {{#if friendsList}}
+                {{#each friendsList}} 
+                    <a href='/genie/fitting-room/{{this._id}}'>
+                        <div class="shared-outfit">
+                            <img src="/images/{{this.image}}" alt="">
+                            <p>{{this.firstname}}</p>
+                        </div>
+                    </a>
+                {{/each}}
+            {{else}}
+                <p>Looks like none of your genies need your opinion right now!</p>
+            {{/if}}
         </div>
     </div>
-</div> --}}
+</div>
 
 <a href="/outfit/create"></a>
