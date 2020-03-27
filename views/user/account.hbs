@@ -1,23 +1,26 @@
-{{> create_btn }}
-
-
-<h1>Hi {{user.username}}! this is your profile!</h1>
-<div>
+<h2 id="createH2" class="H2">Welcome to your profile, {{user.username}}!</h2>
+<div  id="top-image">
     <img src="/images/{{user.image}}" alt="">
-    
 </div>
-<form action="/user/update" method="post" enctype="multipart/form-data">
 
-    <label for="user-img">Upload new image</label>
-    <input type="file" name="user-img" />
+<div id="form-frame">
+    <form action="/user/update" method="POST" id="form-frame-inside" enctype="multipart/form-data">
 
-    <label for="firstname">Firstname: </label>
-    <input type="text" name="firstname" value="{{user.firstname}}" placeholder={{user.firstname}}><br>
-    <label for="lastname">Lastname: </label>
-    <input type="text" name="lastname" value="{{user.lastname}}" placeholder="{{user.lastname}}"><br>
-    <button type="submit">Save Changes</button>
-</form>
+        <div class="form-group">
+            <label for="user-img">Upload your profile picture.</label>
+            <input class="form-control" type="file" required name="user-img">
+        </div>
 
+        <div class="form-group">
+            <label for="firstname">Firstname: </label>
+            <input type="text" name="firstname" required class="form-control" value="{{user.firstname}}" placeholder={{user.firstname}}>
+        </div>
 
+        <div class="form-group">
+            <label for="lastname">Lastname: </label>
+            <input type="text" name="lastname" required class="form-control" value="{{user.lastname}}" placeholder="{{user.lastname}}">
+        </div>
 
-<div>
+        <button type="submit" class="btn btn-primary" id="btn-primary-green-login" id="">Save changes</button>
+    </form>
+</div>

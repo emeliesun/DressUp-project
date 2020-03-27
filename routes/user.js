@@ -149,7 +149,6 @@ app.get('/add-friend', (req, res) => {
 });
 
 app.get('/add-friend/:id', (req,res)=>{
-  // debugger
   const friendId = req.params.id;
   let userId = req.session.currentUser._id;
   User.findByIdAndUpdate(friendId,{
@@ -163,21 +162,6 @@ app.get('/add-friend/:id', (req,res)=>{
       res.send(`Error: ${err}`);
     });
 
-})
-
-
-// temp route for User Account page
-app.get('/account', (req,res)=>{
-  //debugger
-  let userId = req.session.currentUser._id;
-  User.findById(userId)
-   .then(userData => {
-     console.log(userData)
-     res.render('user/account', { user: userData})
-   })
-   .catch(err => {
-    res.send(`Error: ${err}`);
-    });
 })
 
 // Logout
