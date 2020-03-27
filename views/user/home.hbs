@@ -2,10 +2,11 @@
 {{> create_btn }}
 {{!-- <p>Welcome {{username}}</p> --}}
 
+
 <div id="home-frame">
-    <div>
+    <div id="fitting-room-frame">
         <h2 class="mainH2">Your Fitting Room</h2>
-        <div>
+        <div id="fitting-room-frame-inside">
             {{#each outfit}}
             <a href="/outfit/feed/{{this._id}}">
                 <div class="shared-outfit">

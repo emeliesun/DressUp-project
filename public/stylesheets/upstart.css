@@ -4,6 +4,8 @@
     width: 100%;
   }
 
+
+
   #intro{
     display: flex;
     justify-content: center;
@@ -13,10 +15,14 @@
     background-repeat: no-repeat;
     background-size: contain;
     height: 540px;
+    width: 100vw;
+    margin: auto 0px;
+    /* margin-top: 60px; */
   }
 
   .intro_info{
-    margin: 0 0 160px 0;
+    margin: auto 0px;
+    /* margin: 0 0 160px 0; */
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -75,13 +81,14 @@
   }
 
 
-#form-frame-inside {
-    background: #fff;
-    padding: 4em 4em 2em;
-    max-width: 400px;
-    margin: 50px auto 0;
-    border-radius: 2px;
-}
+  #form-frame-inside {
+      background: #fff;
+      padding: 4em 4em 2em;
+      max-width: 400px;
+      margin: 50px auto 0;
+      border-radius: 2px;
+
+  }
 
   span {
     display:block;

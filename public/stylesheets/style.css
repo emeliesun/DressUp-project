@@ -10,11 +10,24 @@ Heart & Item Icons red: rgb(250, 116, 112);
 
 font-family: San Francisco Pro Text;
  */
+
+
+
+ @import "nav_intro.css";
+ @import "nav.css";
+ @import "outfit.css";
+ @import "sidemenu.css";
+  @import "upstart.css";
+  @import "user.css";
+
+
 @media screen and (max-width: 600px) {
   .topnav a {
     float: none;
     width: 100%;
   }
+
+ 
 
     body{
         margin: 0;
@@ -23,15 +36,30 @@ font-family: San Francisco Pro Text;
         font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Helvetica, Arial, sans-serif;
     }
 
-    a{
+    .BG-main {
+      position: relative;
+    }
+  
+    .BG {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+
+    a, a:hover{
         text-decoration: none;
         color: black;
     }
 
+    
     #create-btn{
-        position: fixed;
-        margin: 7px 310px 10px 10px;
-        height: 50px;
+      position: fixed;
+      bottom: 2vh;
+      right: 5vw;
+      z-index: 20;
     }
     
 /*Insert ;all headings and make them work throughout the page)*/

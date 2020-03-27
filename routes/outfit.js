@@ -15,24 +15,43 @@ app.get("/create", (req, res)=>{
 
 app.post("/create", upload.single('outfit-img'),(req,res)=>{
     let userId = req.session.currentUser._id
-    Outfit.create({
-        title: req.body.title,
-        image: req.body.image,
-        occasion: req.body.occasion,
-        description: req.body.description,
-        image: req.file.filename,
-        owner: userId,
-        //items: [],
-        // liked_by: [] ,
-        shared: false,
-    })
-    .then((outfitData)=>{
-        console.log("created: ", outfitData)
-        res.redirect(`/outfit/detail/${outfitData._id}`);
-    })
-    .catch((err)=> {
-        res.send(`Error: ${err}`);
-    })
+    if (!req.file){
+        Outfit.create({
+            title: req.body.title,
+            image: req.body.image,
+            occasion: req.body.occasion,
+            description: req.body.description,
+            owner: userId,
+            shared: false,
+        })
+        .then((outfitData)=>{
+            console.log("created: ", outfitData)
+            res.redirect(`/outfit/detail/${outfitData._id}`);
+        })
+        .catch((err)=> {
+            res.send(`Error: ${err}`);
+        })
+    } else {
+        Outfit.create({
+            title: req.body.title,
+            image: req.body.image,
+            occasion: req.body.occasion,
+            description: req.body.description,
+            image: req.file.filename,
+            owner: userId,
+            //items: [],
+            // liked_by: [] ,
+            shared: false,
+        })
+        .then((outfitData)=>{
+            console.log("created: ", outfitData)
+            res.redirect(`/outfit/detail/${outfitData._id}`);
+        })
+        .catch((err)=> {
+            res.send(`Error: ${err}`);
+        })
+    }
+    
 })
 
 // Outfit List
@@ -106,7 +125,7 @@ app.get("/detail/:id", (req, res)=>{
         })
 })
 
-// Share
+// Share in feed
 app.get('/share/:id', (req,res)=>{  // move this to axios!
     Outfit.findByIdAndUpdate(req.params.id, {
         shared: true
@@ -120,7 +139,7 @@ app.get('/share/:id', (req,res)=>{  // move this to axios!
     })    
 })
 
-// Unshare
+// Unshare in feed
 app.get('/unshare/:id', (req,res)=>{  // move this to axios!
     Outfit.findByIdAndUpdate(req.params.id, {
         shared: false
@@ -128,6 +147,34 @@ app.get('/unshare/:id', (req,res)=>{  // move this to axios!
     .then((outfitData)=>{
         console.log("Shared: ", outfitData)
         res.redirect(`/outfit/feed/${outfitData._id}`)
+    })
+    .catch((err)=> {
+        res.send(`Error: ${err}`);
+    })    
+})
+
+// Share in detail
+app.get('/share/:id', (req,res)=>{  // move this to axios!
+    Outfit.findByIdAndUpdate(req.params.id, {
+        shared: true
+    })
+    .then((outfitData)=>{
+        console.log("Shared: ", outfitData)
+        res.redirect(`/outfit/detail/${outfitData._id}`)
+    })
+    .catch((err)=> {
+        res.send(`Error: ${err}`);
+    })    
+})
+
+// Unshare in detail
+app.get('/unshare/:id', (req,res)=>{  // move this to axios!
+    Outfit.findByIdAndUpdate(req.params.id, {
+        shared: false
+    })
+    .then((outfitData)=>{
+        console.log("Shared: ", outfitData)
+        res.redirect(`/outfit/detail/${outfitData._id}`)
     })
     .catch((err)=> {
         res.send(`Error: ${err}`);

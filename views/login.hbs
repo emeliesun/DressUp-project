@@ -1,21 +1,23 @@
-{{>nav_intro}}
+{{!-- {{>nav_intro}} --}}
 
 {{#if errorMessage}}
 <div class="error-message">{{ errorMessage }}</div>
 {{/if}}
+<div class="BG">
+    <form action="/login" method="POST" id="form-frame-inside">
 
-<form action="/login" method="POST" id="form-frame-inside">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" required placeholder="Username" name="username">
+        </div>
+            
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" required class="form-control" id="password" placeholder="Password" name="password">
+        </div>
 
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input class="form-control" type="text" required placeholder="Username" name="username">
-    </div>
-        
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" required class="form-control" id="password" placeholder="Password" name="password">
-    </div>
+        <button type="submit" class="btn btn-primary" id="btn-primary-green-login">Login</button>
+        <span class="login-check">Don't have an account yet?  <a href="/signup" class="login-link"> Signup!</a></span>
+    </form>
+</div>
 
-    <button type="submit" class="btn btn-primary" id="btn-primary-green-login">Login</button>
-    <span class="login-check">Don't have an account yet?  <a href="/signup" class="login-link"> Signup!</a></span>
-</form>

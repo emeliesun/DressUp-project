@@ -8,7 +8,7 @@ var upload        = multer({ dest: 'public/images/' });
 
 // Home
 app.get('/home', (req, res) => {
-  // debugger
+  debugger
   let userName = req.session.currentUser.username;
   let userId = req.session.currentUser._id;
   Outfit.find({

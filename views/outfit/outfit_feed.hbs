@@ -2,7 +2,7 @@
 {{> create_btn }}
 
 <div id="top-image">
-    <img src="/{{outfit.image}}" alt="" class="outfit-feed-img">
+    <img src="/images/{{outfit.image}}" alt="" class="outfit-feed-img">
 </div>
 
 
@@ -29,8 +29,10 @@
 
 
 <h2 id="outfit-liked-by">Your outfit is liked by:</h4>
-<div class="item-list">
-    {{#each outfit.liked_by}}
-        {{> outfit_feed_user_thumb}}   
-    {{/each}} 
+<div class="list-group"></div>
+    {{!-- <div class="item-list"> --}}
+        {{#each outfit.liked_by}}
+            {{> outfit_feed_user_thumb}}   
+        {{/each}} 
+    {{!-- </div> --}}
 </div>
