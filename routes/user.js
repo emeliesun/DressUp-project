@@ -11,6 +11,7 @@ app.get('/home', (req, res) => {
   debugger
   let userName = req.session.currentUser.username;
   let userId = req.session.currentUser._id;
+  let friendsList;
   Outfit.find({
       $and : [
       {shared:true}
@@ -22,13 +23,25 @@ app.get('/home', (req, res) => {
       populate:{path:'friends'}
     })
     .then (outfitData => {
-      let outfits = outfitData.map((outfit)=> {
+      if (outfitData.length>0) {
+        let outfits = outfitData.map((outfit)=> {
         let outfitMapped = outfit;
         outfitMapped.nr_likes = outfit.liked_by.length;
         return outfitMapped;
-      })
-      outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
-      let friendsList = outfitData[0].owner.friends;
+        })
+        outfits.sort((outfitA, outfitB)=> outfitB.nr_likes - outfitA.nr_likes);
+        friendsList = outfitData[0].owner.friends;
+      } else { 
+        User.findById(userId)
+          .then(userData =>{
+            friendsList = userData.friends;
+          })
+          .catch(err => {
+            res.send(`Error: ${err}`);
+          });
+          outfits = [];
+      }
+      
       res.render('user/home',{outfit:outfits,username:userName, friendsList:friendsList})
     })
     .catch(err => {

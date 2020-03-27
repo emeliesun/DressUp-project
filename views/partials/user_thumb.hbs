@@ -5,9 +5,9 @@
 </div>
 <div id="shared_outfit_thumb_framework">
     <div class="framework_inside">
-        <h4 id="H4">{{this.firstname}} {{this.lastname}}</h4>
+        <h5 id="H4">{{this.firstname}} {{this.lastname}}</h5>
         <div class="add-friend-btn" id="{{this._id}}" onclick="addFriend(this)">
-            <img src="/images/add_btn.png" alt="">
+            <img src="/images/icon_plus.png" alt="">
         </div>
     </div>
 </div>
@@ -19,7 +19,7 @@
         .then((response)=> {
             // handle success
             if (response) {
-                element.innerHTML = '<img src="" alt="" >'
+                element.innerHTML = '<img src="/images/hourglass.png" alt="" >'
             }
             console.log(response);
         })
