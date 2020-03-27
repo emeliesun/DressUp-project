@@ -3,15 +3,9 @@
 {{> side_menu}}
 {{> sidemenu_open_btn}}
 
-<p>This is your Activity Feed-page. Here you will be able to see:</p>
-<ul>
-    <li>Requests from genies, that have invited you to go have a look at their outfit.</li>
-    <li>Acitivity feed, where you will see what kind of activities your little helpers have liked or cmmented on your outfit from the Fitting Room.</li>
-</ul>
-
 <h2>Requests</h2>
 <div id="requests">
     {{#each userFeedData.friend_request}}
-        {{> user_thumb}}
+        {{> user_request_thumb}}
     {{/each}}
 </div>

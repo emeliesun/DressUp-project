@@ -8,11 +8,11 @@ var upload        = multer({ dest: 'public/images/' });
 
 // Home
 app.get('/home', (req, res) => {
-  debugger
+  // debugger
   let userName = req.session.currentUser.username;
   let userId = req.session.currentUser._id;
   let friendsList;
-  let outfits = [];
+  var outfits;
   Outfit.find({
       $and : [
       {shared:true}
@@ -23,7 +23,7 @@ app.get('/home', (req, res) => {
       path:'owner', 
       populate:{path:'friends'}
     })
-    .then (outfitData => {
+    .then ((outfitData) => {
       if (outfitData.length>0) {
         outfits = outfitData.map((outfit)=> {
         let outfitMapped = outfit;
@@ -53,30 +53,12 @@ app.get('/home', (req, res) => {
 
 // Feed (friend requests)
 app.get('/feed', (req, res) => {
-  let userName = req.session.currentUser.username;
-  User.find({
-    filter: {
-     username: userName
-    },
-    project: {
-     username:1,
-     friend_request: 1,
-     friends: 1,
-     new_reqs:1
-    }
-   })
+  let userId = req.session.currentUser._id;
+  User.findById(userId)
    .populate("friend_request")
-   .populate("friends")
     .then(feedData => {
-      User.findOneAndUpdate({username: userName},{
-        new_reqs: false
-        })
-        .then(theUser => {
-          console.log('new feed flag was reset!')
-        })
-        .catch(err => {
-          res.send(`Error: ${err}`);
-        });
+        feedData.new_reqs= false;   
+      console.log(feedData)  
       res.render('user/feed', {userFeedData:feedData});
     })
     .catch(err => {
@@ -162,6 +144,25 @@ app.get('/add-friend', (req, res) => {
     });
 });
 
+// Accept request
+app.get('/accept-friend/:id', (req,res)=>{
+  const friendId = req.params.id;
+  let userId = req.session.currentUser._id;
+  User.findByIdAndUpdate(userId,{
+    $push: { friends: friendId },
+    $pull: { friend_request:friendId } 
+    })
+    .then(userData => {
+      console.log(`friend added : ${userData.friend_request}`)
+      res.json({response: true})
+    })
+    .catch(err => {
+      res.send(`Error: ${err}`);
+    });
+
+})
+
+// Send request
 app.get('/add-friend/:id', (req,res)=>{
   const friendId = req.params.id;
   let userId = req.session.currentUser._id;

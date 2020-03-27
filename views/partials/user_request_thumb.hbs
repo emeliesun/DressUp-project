@@ -1,0 +1,34 @@
+
+<script src="/javascripts/script.js"></script>
+<div>
+    <img src="/{{this.image}}" alt="">
+</div>
+<div id="shared_outfit_thumb_framework">
+    <div class="framework_inside">
+        <h5 id="H4">{{this.firstname}} {{this.lastname}}</h5>
+        <div class="accept-friend-btn" id="{{this._id}}" onclick="acceptFriend(this)">
+            <img src="/images/icon_plus.png" alt="">
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function acceptFriend (element) {
+     let friendId = element.id;   
+    axios.get(`/user/accept-friend/${friendId}`)
+        .then((response)=> {
+            // handle success
+            if (response) {
+                element.innerHTML = '<img src="/images/icon_check_btn.png" alt="" >'
+            }
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
+}
+</script>
