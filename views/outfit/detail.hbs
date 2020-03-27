@@ -3,6 +3,7 @@
 {{> side_menu}}
 {{> sidemenu_open_btn}}
 
+
 <div id="detail-form">
     <div id="top-image">
         <img src="/images/{{outfit.image}}" alt="Outfit-image">
@@ -23,7 +24,6 @@
                 {{/if}}
                 <a href="/outfit/update/{{outfit._id}}"><img src="/images/icon_update.png" alt="Update" class="outfit-feed-icons"></a>
                 <a href="/outfit/delete/{{outfit._id}}"><img src="/images/delete_bin.png" alt="Delete" class="outfit-feed-icons"></a>
-                 <a href="/item/create"><img src="/images/add_item.png" alt="Add Item" class="outfit-feed-icons"></a>
             </div>
     </div>
 
@@ -36,4 +36,8 @@
     <a href="/outfit/list"><img src="/images/back_btn.png" alt="Back" class="back-btn"></a>
 </div>
 
-
+    <div id="green-plus-btn">
+        <a href="/item/create">
+            <img src="/images/add_btn.png" alt="Create new item" id="create-btn">
+        </a>
+    </div>

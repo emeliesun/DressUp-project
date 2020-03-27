@@ -197,7 +197,6 @@ app.get('/update/:id', (req, res)=>{
 } )
 
 app.post('/update',   upload.single('outfit-img') , (req, res)=>{
-    // debugger
     let outfitId = req.body.id
     if (!req.file) {
         Outfit.findByIdAndUpdate(outfitId, {

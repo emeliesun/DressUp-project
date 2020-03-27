@@ -149,7 +149,6 @@ app.get('/add-friend', (req, res) => {
 });
 
 app.get('/add-friend/:id', (req,res)=>{
-  // debugger
   const friendId = req.params.id;
   let userId = req.session.currentUser._id;
   User.findByIdAndUpdate(friendId,{

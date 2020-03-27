@@ -3,13 +3,14 @@
 <div>
     <img src="/{{this.image}}" alt="">
 </div>
-<div>
-    <h3>{{this.firstname}} {{this.lastname}}</h3>
-    <div class="add-friend-btn" id="{{this._id}}" onclick="addFriend(this)">
-        <img src="/images/trash-4-24.png" alt="" >
-    </div> 
+<div id="shared_outfit_thumb_framework">
+    <div class="framework_inside">
+        <h4 id="H4">{{this.firstname}} {{this.lastname}}</h4>
+        <div class="add-friend-btn" id="{{this._id}}" onclick="addFriend(this)">
+            <img src="/images/add_btn.png" alt="">
+        </div>
+    </div>
 </div>
-
 
 <script type="text/javascript">
     function addFriend (element) {

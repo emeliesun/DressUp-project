@@ -10,6 +10,26 @@
     color: rgb(173, 66, 60);
 }
 
+.H2{
+    margin: 90px auto 0 auto !important; 
+    display: flex;
+    text-align: center;
+}
+
+#add-friend-info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 40px 0 0 0;
+}
+
+#H4{
+    display: inline;
+    margin-right: 80px;
+    margin-left: 20px;
+}
+
+
 /*  */
 /*  */
 /*  */
