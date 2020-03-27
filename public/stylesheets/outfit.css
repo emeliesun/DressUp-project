@@ -255,12 +255,14 @@
         width: 30px;
         position: relative;
     }
-
     .back-btn{
-        position: sticky;
-        margin: 0px 0px 0px 20px;
+        position: fixed;
+        bottom: 2vh;
+        right: 91%;
+        /* right: 87vw; */
+        z-index: 20;
+        height: 30px;
     }
-
 }
 
 

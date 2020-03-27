@@ -15,7 +15,7 @@ const outfitSchema = new Schema({
       'Dinner', 
       'Funeral', 
       'Date', 
-      'Workout'] 
+      'Workout',] 
   },
   description: {type: String},
   items: [{ 
