@@ -1,3 +1,21 @@
-.sidemenu-box {
+#sidemenu-box {
+    width: 70vw;
+    height: 100vh;
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    right: 0px;
+    bottom: 0px;
     
 }
+
+#side-menu-open-btn {
+    width: 50px;
+    position: fixed;
+    right: 0px;
+    top: 20vh;
+}
+
+.invisible {
+    visibility: hidden;
+}                                                    

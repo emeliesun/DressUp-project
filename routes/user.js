@@ -17,7 +17,10 @@ app.get('/home', (req, res) => {
       , {owner:{_id:userId}}
       ]
     })
-    .populate({path:'owner', populate:{path:'friends'}})
+    .populate({
+      path:'owner', 
+      populate:{path:'friends'}
+    })
     .then (outfitData => {
       let outfits = outfitData.map((outfit)=> {
         let outfitMapped = outfit;

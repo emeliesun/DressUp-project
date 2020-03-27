@@ -2,8 +2,8 @@
 
 <h2 id="createH2">Create New Outfit</h2>
 <div id="form-frame">
-    <form action="/outfit/create" method="POST" id="form-frame-inside enctype="multipart/form-data">
-
+    <form action="/outfit/create" method="POST" id="form-frame-inside" enctype="multipart/form-data">
+        
         <div class="form-group">
             <label for="outfit-img">Choose an image</label>
             <input class="form-control" type="file" required name="outfit-img">
@@ -11,7 +11,7 @@
 
         <div class="form-group">
             <label for="title">Title:</label>
-            <input type="text" required class="form-control" id="password" placeholder="This better be unique">
+            <input type="text" required class="form-control" placeholder="This better be unique">
         </div>
 
         <div class="form-group">
@@ -24,10 +24,10 @@
         </div>
 
 
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="What is on your mind about this outfit?"></textarea>
-    </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="What is on your mind about this outfit?"></textarea>
+        </div>
 
         <button type="submit" class="btn btn-primary" id="btn-primary-green-login" id="">Create</button>
     </form>
