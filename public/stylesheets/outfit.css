@@ -5,10 +5,16 @@
   }
 
   .shared-outfit {
-      width: 40vw;
+      width: 95vw;
       height: 30vh;
     max-height: 22vh;
   }
+
+  .shared-outfit-home {
+    width: 40vw;
+    height: 30vh;
+  max-height: 22vh;
+}
   .shared-outfit p{
 
   }
@@ -16,12 +22,19 @@
   .mainH2 {
       margin-top: 20px;
   }
-  .shared-outfit img{
-    width: 100%;
+  .shared-outfit-home img{
+
     max-height: 18vh;
-    /* height: 15vh; */
+    width: 38vw;
     border-radius: 5px;
-}
+    }
+
+    .shared-outfit img{
+
+        max-height: 18vh;
+        /* height: 15vh; */
+        border-radius: 5px;
+    }
 
 #fitting-room-frame {
     width: 96vw;
@@ -86,11 +99,21 @@
     #shared_outfit_thumb_framework{
         background: white;
         margin: 20px 20px;
+        width: 91vw;
+        border-radius: 5px;
+    }
+
+    #fitting-room-frame {
+        display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     }
 
     .framework_inside{
         display: flex;
         justify-content: space-between;
+        width: 90vw;
     }
 
     .desc{
