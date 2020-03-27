@@ -1,21 +1,22 @@
 {{>nav}}
 
 <div id="top-image">
-    <img src="/images/{{item.image}}" alt="">
+    <img src="/images/{{item.image}}" alt="" class="outfit-feed-img">
 </div>
 <div id="description">
     <div>
         <h2 class="title">{{item.title}}</h2>
-        <h4 class="sub-title">{{item.brand}}</h4>
-        <h4 class="sub-title">{{item.material}}</h4>
-        <p class="sub-title">{{item.occasion}}</p>
+        <h5 class="sub-title">Brand: {{item.brand}}</h5>
+        <h5 class="sub-title">Material: {{item.material}}</h5>
+        <h5 class="sub-title">Occasion: {{item.occasion}}</h5>
     </div>
 
+    <div id="icon-div">
+        <a href="/item/update/{{item._id}}"><img src="/images/icon_update.png" alt="Update"
+                class="outfit-feed-icons"></a>
+        <a href="/item/delete/{{item._id}}"><img src="/images/delete_bin.png" alt="Delete"
+                class="outfit-feed-icons"></a>
+    </div>
+        <a href="/outfit/list"><img src="/images/back_btn.png" alt="Back" class="back-btn"></a>
 
-
-<a href="/item/delete/{{item._id}}"><button class="delete-btn" id="delete-item">Delete</button></a>
-
-<a href="/item/update/{{item._id}}"><button class="delete-btn" id="delete-item">Update</button></a><br>
-
-
-<a href="/outfit/list"><button class="back-btn" id="back-to-list">Back</button></a>
+</div>

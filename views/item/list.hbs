@@ -1,13 +1,17 @@
-
 {{>nav}}
+{{> create_btn }}
 
-<h4>this is your wardrobe</h4>
+<h4 class="wardrobe">Wardrobe</h4>
 
-<a href="/item/list"><h5>your items</h5></a>
-<a href="/outfit/list"><h5>your outfits</h5></a>
+<div class="list-btns">
+    <a href="/item/list"><button type="submit" class="btn btn-primary" id="btn-primary-items"><h5>Your items</h5></button></a>
+    <a href="/outfit/list"><button type="submit" class="btn btn-primary" id="btn-primary-outfits"><h5>Your outfits</h5></button></a>
+</div>
+
 
 {{#each itemsListData}}
     <div class="item-thumb">
         {{> item_thumb}}
     </div>
 {{/each}}
+

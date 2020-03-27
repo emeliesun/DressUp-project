@@ -1,32 +1,46 @@
 {{>nav}}
 
-<div>
-    <img src="/images/{{item.image}}" alt="" >
+<div id="top-image">
+    <img src="/images/{{item.image}}" alt="" class="outfit-feed-img">
 </div>
+{{!-- //////////////////////////////////////////////////////////////////////// --}}
 
-<form action="/item/update" method="post" enctype="multipart/form-data">
+<h2 id="createH2">Update Item</h2>
+<div id="form-frame">
+    <form action="/item/update" method="POST" id="form-frame-inside" enctype="multipart/form-data">
 
-    <input type="text" name="id" value="{{item._id}}" hidden>
+        <input type="text" name="id" value="{{item._id}}" hidden>
 
-    <label for="item-img">Choose an image</label>
-    <input type="file" name="item-img" /><br>
+        <div class="form-group">
+            <label for="item-img">Choose an image</label>
+            <input class="form-control" type="file" name="item-img">
+        </div>
 
-    <label for="title">title</label>
-    <input type="text" name="title" value="{{item.title}}" placeholder="{{item.title}}"><br>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="form-control" value="{{item.title}}" placeholder="{{item.title}}">
+        </div>
 
-    <label for="material">Material</label>
-    <select name="material" id="item-material"> 
-        <option value="Mocha">Mocha</option>
-        <option value="Leather">Leather</option>
-        <option value="Cotton">Cotton</option>
-    </select><br>
+        <div class="form-group">
+            <label for="material">Material</label>
+            <select name="material" required id="item-material" class="form-control">
+                <option value="{{outfit.occasion}}">Make a choice</option>
+                <option value="Mocha">Mocha</option>
+                <option value="Leather">Leather</option>
+                <option value="Cotton">Cotton</option>
+            </select>
+        </div>
 
-    <label for="brand">Brand</label>
-    <select name="brand" id="item-brand"> 
-        <option value="YSL">YSL</option>
-        <option value="Gucci">Gucci</option>
-        <option value="Louis Vuitton">Louis Vuitton</option>
-    </select><br>
+        <div class="form-group">
+            <label for="brand">Brand</label>
+            <select name="brand" required id="item-brand" class="form-control">
+                <option value="{{outfit.occasion}}">Make a choice</option>
+                <option value="YSL">YSL</option>
+                <option value="Gucci">Gucci</option>
+                <option value="Louis Vuitton">Louis Vuitton</option>
+            </select>
+        </div>
 
-    <button type="submit" formmethod="POST" id="">Update</button>
-</form>
+        <button type="submit" class="btn btn-primary" formmethod="POST" id="btn-primary-green-login" id="">Update</button>
+    </form>
+</div>
