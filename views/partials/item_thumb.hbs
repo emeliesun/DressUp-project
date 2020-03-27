@@ -1,18 +1,27 @@
 
 {{!-- used in /outfit/detail --}}
-
-<div class="item-row">
-    <a href="/item/detail/{{this._id}}">
-        <div>
-            <h5>{{this.title}}</h5>
-            <p>{{this.material}} </p>
-            <p>{{this.brand}}</p> 
-        </div>
-        <div>
-            <img src="/images/{{this.image}}" alt="" >
-        </div>   
-    </a>
-             
-</div>
-
 {{!-- onclick="myScript(this)" --}}
+
+<div id="shared_outfit_thumb_framework">
+    <a href='/item/detail/{{this._id}}'>
+        <div class="framework_inside">
+            <div class="desc">
+                <div class="desc-frame">
+                    <h5>Title:  </h5>
+                    <p>{{this.title}}</p>
+                </div>
+                <div class="desc-frame">
+                    <h5>Material:  </h5>
+                    <p>{{this.material}}</p>
+                </div>
+                <div class="desc-frame">
+                    <h5>Brand: </h5>
+                    <p>{{this.brand}}</p>
+                </div>
+            </div>
+            <div class="thumb-img">
+                <img src="/images/{{this.image}}" alt="Outfit" class="img-thumb">
+            </div>
+        </div>
+    </a>
+</div>
